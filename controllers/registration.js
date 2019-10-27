@@ -5,32 +5,25 @@ var router = express.Router();
 router.get('/', function(request, response){
 	response.render('registration/index');
 });
-router.get('/freaks', function(request, response){
-    response.render('registration/freaks');
-});
-router.get('/agency', function(request, response){
-    response.render('registration/agency');
-});
 
 router.post('/', function(request, response){
+	
+	var user = {
+		username: request.body.username,
+		password: request.body.password
+	};
 
-    var user = {
-            name: request.body.name,
-            username: request.body.username,
-            password: request.body.password,
-            mobile:  request.body.mobile,
-            gender:request.body.gender,
-            usertype:request.body.usertype
-        };
-    
-    
-        userModel.insert(user, function(status){	
-            if(status){
-                response.redirect("/login");
-            }else{
-                response.redirect("/registration");	
-            }
-        });
-    });
+	userModel.validate(user, function(status){
+		if(status){
+			response.cookie('username', request.body.username);
+			response.redirect('/home');
+		}else{
+			response.send('invalid username/password');		
+		}
+	});
+
+});
 
 module.exports = router;
+
+
