@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2019 at 08:04 AM
+-- Generation Time: Oct 28, 2019 at 09:16 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -29,14 +29,21 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admins` (
-  `id` int(11) NOT NULL,
-  `name` varchar(11) NOT NULL,
-  `email` varchar(11) NOT NULL,
-  `phone` varchar(11) NOT NULL,
-  `gender` varchar(11) NOT NULL,
-  `password` varchar(11) NOT NULL,
-  `profile_pic` varchar(11) NOT NULL
+  `id` int(110) NOT NULL,
+  `name` varchar(110) NOT NULL,
+  `email` varchar(110) NOT NULL,
+  `phone` varchar(110) NOT NULL,
+  `gender` varchar(110) NOT NULL,
+  `password` varchar(110) NOT NULL,
+  `profile_pic` varchar(110) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `name`, `email`, `phone`, `gender`, `password`, `profile_pic`) VALUES
+(1, 'ashik', 'kh.ashik96@gmail.com', '01681710719', 'Male', 'pass', '/abc/admin.png');
 
 -- --------------------------------------------------------
 
@@ -86,6 +93,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password`, `user_type`, `active_status`) VALUES
+(1, 'kh.ashik96@gmail.com', 'pass', 'Admin', '1');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -121,7 +135,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(110) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `freaks`
@@ -139,7 +153,7 @@ ALTER TABLE `travel_agencies`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
