@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2019 at 11:00 PM
+-- Generation Time: Oct 28, 2019 at 08:04 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -63,6 +63,7 @@ CREATE TABLE `freaks` (
 CREATE TABLE `travel_agencies` (
   `id` int(100) NOT NULL,
   `name` varchar(100) NOT NULL,
+  `agency_name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(100) NOT NULL,
   `gender` varchar(100) NOT NULL,
