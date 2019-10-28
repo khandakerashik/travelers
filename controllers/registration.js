@@ -5,6 +5,12 @@ var router = express.Router();
 router.get('/', function(request, response){
 	response.render('registration/index');
 });
+router.get('/freaks', function(request, response){
+    response.render('registration/freaks');
+});
+router.get('/agencies', function(request, response){
+    response.render('registration/agencies');
+});
 
 router.post('/', function(request, response){
 	

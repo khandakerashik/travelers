@@ -7,6 +7,16 @@
   background-color: #000000;
 }
 
+tr{
+  height: 461px;
+  text-align: center;
+}
+
+td{
+  width: 768px;
+
+}
+
 .card-signin {
   border: 0;
   border-radius: 1rem;
