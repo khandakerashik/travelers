@@ -8,9 +8,20 @@ router.get('/', function(request, response){
 
 router.post('/', function(request, response){
 	
-	
+	var user = {
+		username: request.body.username,
+		password: request.body.password
+	};
+
+	userModel.validate(user, function(status){
+		if(status){
+			response.cookie('username', request.body.username);
 			
-		
+			response.redirect('/user/userprofile');
+		}else{
+			response.send('invalid username/password');		
+		}
+	});
 
 });
 
