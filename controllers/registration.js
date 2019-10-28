@@ -1,5 +1,5 @@
 var express = require('express');
-//var userModel = require('./../models/user-model');
+var userModel = require('./../models/user-model');
 var router = express.Router();
 
 router.get('/', function(request, response){
@@ -12,19 +12,25 @@ router.get('/agencies', function(request, response){
     response.render('registration/agencies');
 });
 
-router.post('/', function(request, response){
+router.post('/freaks', function(request, response){
 	
-	var user = {
-		username: request.body.username,
-		password: request.body.password
-	};
 
-	userModel.validate(user, function(status){
+
+	var user = {
+		name: request.body.inputName,
+		email: request.body.inputEmail,
+		phone: request.body.inputPhone,
+		gender:  request.body.inputgender,
+		password:request.body.inputPasswordr,
+		profile_pic:"/abc"
+	};
+	console.log(user.profile_pic);
+
+	userModel.insertFreaks(user, function(status){	
 		if(status){
-			response.cookie('username', request.body.username);
-			response.redirect('/home');
+			response.redirect("/login");
 		}else{
-			response.send('invalid username/password');		
+			response.redirect("/registration/freaks");	
 		}
 	});
 

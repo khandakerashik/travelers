@@ -5,7 +5,7 @@ var getConnection = function(callback){
 	  host     : 'localhost',
 	  user     : 'root',
 	  password : '',
-	  database : 'online book store'
+	  database : 'travelers'
 	});
 	 
 	connection.connect(function(err) {
@@ -41,6 +41,9 @@ module.exports = {
 			}
 		});
 	},
+
+
+
 	execute : function(sql, params, callback){
 		getConnection(function (connection){
 
