@@ -7,16 +7,6 @@
   background-color: #000000;
 }
 
-tr{
-  height: 461px;
-  text-align: center;
-}
-
-td{
-  width: 768px;
-
-}
-
 .card-signin {
   border: 0;
   border-radius: 1rem;
@@ -135,13 +125,19 @@ td{
   }
 }
 
+.form-control{
+  border-radius: 10rem;
+  
+
+}
+
 p{
   font-size: 1rem;
 }
 
 a{
   color: #004482;
-  font-weight:  bold;
+  font-weight: bold;
   font-size: 1.1rem;
 }
 
@@ -152,4 +148,46 @@ a:hover{
 select{
   height: auto;
   border-radius: 2rem;
+}
+
+.data1{
+  margin-left: auto;
+  margin-right: auto;
+  width: 223px;
+  transition: 2s;
+}
+
+.data1:hover{
+  transform: scale(1.07);
+}
+
+.label-anchor{
+  color: white;
+  font: bold 25px arial, sans-serif;
+}
+
+.data2{
+   margin-left: auto;
+  margin-right: auto;
+  width: 253px;
+  transition: 2s;
+}
+
+.data2:hover{
+  transform: scale(1.07);
+}
+
+.table-data1{
+  background-color: #454545;
+  height: 462px;
+}
+
+.table-data2{
+  background-color: #303030;
+  height: 462px;
+}
+
+.paragraph{
+
+  font: 20px arial, sans-serif;;
 }
