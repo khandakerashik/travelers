@@ -49,20 +49,32 @@ module.exports = {
 	},
 	insert: function(user, callback){
 
-		var sql ="insert into users values('', ?, ?,?,?,?,?)";
-		db.execute(sql, [user.fullname,user.username, user.password,user.mobile,user.gender,user.usertype], function(status){
+		var sql ="insert into users values('',?,?,?,?)";
+		db.execute(sql, [user.email,user.password,user.type,user.status], function(status){
 			callback(status);
 		});
 	},
 
-
 	insertFreaks: function(user, callback){
 
+			
 			var sql ="insert into freaks values('',?,?,?,?,?,?)";
-			db.execute(sql, [user.name,user.email, user.phone,user.gender,user.password,user.profile_pic], function(status){
+			console.log(sql);
+			db.execute(sql, [user.name,user.email,user.phone,user.gender,user.password,user.profile_pic], function(status){
 				callback(status);
 			});
 		},
+
+	insertTravel_agencies: function(user, callback){
+
+			
+			var sql ="insert into travel_agencies values('',?,?,?,?,?,?,?)";
+			console.log(sql);
+			db.execute(sql, [user.name,user.agencies,user.email,user.phone,user.gender,user.password,user.profile_pic], function(status){
+				callback(status);
+			});
+		},
+
 	update: function(user, callback){
 		var sql ="update users set username=?, password=? where id=?";
 	

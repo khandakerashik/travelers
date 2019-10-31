@@ -27,8 +27,17 @@ router.post('/freaks', function(request, response){
 		type:"freaks"
 	};
 	
-
-	userModel.insertFreaks(user, function(status){	
+     request.checkBody('inputEmail','*Enter a valid email').isEmail().normalizeEmail();
+     request.checkBody('inputPassword', '*Password must be between 5-60 characters long.').len(5, 60);
+     
+     const err=request.validationErrors();
+    
+    if(err){
+        //console.log(err.msg);
+       // response.send('success');
+        response.render('registration/freaks',{errors:err,user:user});
+    }else{
+        userModel.insertFreaks(user, function(status){	
 		if(status)
 		{
 				userModel.insert(user, function(status){	
@@ -41,10 +50,18 @@ router.post('/freaks', function(request, response){
 
 		}
 	});
+        
+    }	
 
 	
 
 });
+
+
+
+
+
+
 
 
 router.post('/agencies', function(request, response){
@@ -54,32 +71,45 @@ router.post('/agencies', function(request, response){
 	var user = {
 		name: request.body.inputName,
 		email: request.body.inputEmail,
+        agencies:request.body.inputAgencyname,
 		phone: request.body.inputPhone,
 		gender:  request.body.inputGender,
 		password:request.body.inputPassword,
 		profile_pic:"/abc",
 		status:"1",
-		type:"freaks"
+		type:"agencies"
 	};
 	
-
-	userModel.insertFreaks(user, function(status){	
+     //request.checkBody('inputEmail','*Enter a valid email').isEmail().normalizeEmail();
+     //request.checkBody('inputPassword', '*Password must be between 5-60 characters long.').len(5, 60);
+     
+     const err=request.validationErrors();
+    
+    if(err){
+        //console.log(err.msg);
+       // response.send('success');
+        response.render('registration/agencies',{errors:err,user:user});
+    }else{
+        userModel.insertTravel_agencies(user, function(status){	
 		if(status)
 		{
 				userModel.insert(user, function(status){	
  			if(status){
 			 	response.redirect("/login");
 			}else{
- 				response.redirect("/registration/freaks");	
+ 				response.redirect("/registration/agencies");	
 			     }
  		   });
 
 		}
 	});
+        
+    }	
 
 	
 
 });
+
 
 
 
