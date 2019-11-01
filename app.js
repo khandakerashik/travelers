@@ -8,6 +8,7 @@ var login = require('./controllers/login');
 var logout= require('./controllers/logout');
 var registration = require('./controllers/registration');
 var home = require('./controllers/home');
+var admin = require('./controllers/admin');
 var blog = require('./controllers/blog');
 var events = require('./controllers/events');
 var exValidator = require('express-validator');
@@ -25,6 +26,7 @@ app.use(exValidator());
 app.use(expSession({secret:'my top secret value', saveUninitialized:true, resave: false}));
 app.use(cookieParser());
 app.use('/abc', express.static('assets'));
+app.use('/admin',admin);
 app.use('/login', login);
 app.use('/registration', registration);
 app.use('/',login);                   //index page ==>request bypass to login page
