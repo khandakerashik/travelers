@@ -87,7 +87,23 @@ module.exports = {
 		db.execute(sql, [id], function(status){
 			callback(status);
 		});
+	},
+    
+alreadyHaveEmail: function(email, callback){
+            
+			var sql = "select * from users where email = ?";
+			db.getResults(sql, [email], function(result){
+				if(result.length > 0 ){
+					callback(result[0]);
+				}else{
+					callback([]);
+				}
+			});
+    
+        
 	}
+    
+    
 }
 
 
