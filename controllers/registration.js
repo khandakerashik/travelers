@@ -5,18 +5,9 @@ var router = express.Router();
 router.get('/', function(request, response){
 	response.render('registration/index');
 });
+
 router.get('/freaks', function(request, response){
-    response.render('registration/freaks');
-});
-router.get('/agencies', function(request, response){
-    response.render('registration/agencies');
-});
-
-router.post('/freaks', function(request, response){
-	
-
-
-	var user = {
+    var user = {
 		name: request.body.inputName,
 		email: request.body.inputEmail,
 		phone: request.body.inputPhone,
@@ -26,16 +17,68 @@ router.post('/freaks', function(request, response){
 		status:"1",
 		type:"freaks"
 	};
-	
-     request.checkBody('inputEmail','*Enter a valid email').isEmail().normalizeEmail();
-     request.checkBody('inputPassword', '*Password must be between 5-60 characters long.').len(5, 60);
-     
-     const err=request.validationErrors();
     
+    response.render('registration/freaks',{user:user});
+});
+
+router.get('/agencies', function(request, response){
+    
+    	var user = {
+		name: request.body.inputName,
+		email: request.body.inputEmail,
+        agencies:request.body.inputAgencyname,
+		phone: request.body.inputPhone,
+		gender:  request.body.inputGender,
+		password:request.body.inputPassword,
+		profile_pic:"/abc",
+		status:"1",
+		type:"agencies"
+	};
+    
+    
+    
+    response.render('registration/agencies',{user:user});
+});
+
+router.post('/freaks', function(request, response){
+	
+    var email;
+    
+	var user = {
+		name: request.body.inputName,
+		email: request.body.inputEmail,
+		phone: request.body.inputPhone,
+		gender:  request.body.inputGender,
+		password:request.body.inputPassword,
+        conPassword:request.body.inputConfirmPassword,
+		profile_pic:"/abc",
+		status:"1",
+		type:"freaks"
+	};
+    
+    
+	 // Input validation
+     
+     
+    
+    userModel.alreadyHaveEmail(request.body.inputEmail, function(result){
+    //console.log( result.email);
+        
+     //console.log(result.email+" inside");
+     request.checkBody('inputEmail','*Email Already Taken').not().equals(result.email); 
+     request.checkBody('inputPassword', '*Password must be between 6-60 characters long').len(6, 60);
+     request.checkBody('inputPhone','*Enter a valid mobile no').isMobilePhone();
+     request.checkBody('inputGender','*Select a gender').isIn('male','female');
+     request.checkBody('inputPassword','*Both password not match').equals(request.body.inputConfirmPassword);
+     //console.log(email+" lol");
+     
+     
+     var err=request.validationErrors();
+  
+   
     if(err){
-        //console.log(err.msg);
-       // response.send('success');
-        response.render('registration/freaks',{errors:err,user:user});
+       
+        response.render('./registration/freaks',{user:user,errors:err});
     }else{
         userModel.insertFreaks(user, function(status){	
 		if(status)
@@ -51,15 +94,17 @@ router.post('/freaks', function(request, response){
 		}
 	});
         
-    }	
+    }  
+           
+	});
+    
+    // console.log(email);
+     
+   	
 
 	
 
 });
-
-
-
-
 
 
 
@@ -75,19 +120,27 @@ router.post('/agencies', function(request, response){
 		phone: request.body.inputPhone,
 		gender:  request.body.inputGender,
 		password:request.body.inputPassword,
+        conPassword:request.body.inputConfirmPassword,
 		profile_pic:"/abc",
 		status:"1",
 		type:"agencies"
 	};
 	
-     //request.checkBody('inputEmail','*Enter a valid email').isEmail().normalizeEmail();
-     //request.checkBody('inputPassword', '*Password must be between 5-60 characters long.').len(5, 60);
-     
+     // Input validation
+    
+     userModel.alreadyHaveEmail(request.body.inputEmail, function(result){ 
+         
+         
+     request.checkBody('inputEmail','*Email Already Taken').not().equals(result.email);
+     request.checkBody('inputPassword', '*Password must be between 6-60 characters long').len(6, 60);
+     request.checkBody('inputPhone','*Enter a valid mobile no').isMobilePhone();
+     request.checkBody('inputGender','*Select a gender').isIn('male','female');
+     request.checkBody('inputPassword','*Both password not match').equals(request.body.inputConfirmPassword);
+      
      const err=request.validationErrors();
     
     if(err){
-        //console.log(err.msg);
-       // response.send('success');
+       
         response.render('registration/agencies',{errors:err,user:user});
     }else{
         userModel.insertTravel_agencies(user, function(status){	
@@ -104,13 +157,11 @@ router.post('/agencies', function(request, response){
 		}
 	});
         
-    }	
+      }	
+         
+     });    
 
-	
-
-});
-
-
+  });
 
 
 
