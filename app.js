@@ -8,7 +8,8 @@ var login = require('./controllers/login');
 var logout= require('./controllers/logout');
 var registration = require('./controllers/registration');
 var home = require('./controllers/home');
-var admin = require('./controllers/admin');
+var blog = require('./controllers/blog');
+var events = require('./controllers/events');
 var exValidator = require('express-validator');
 
 
@@ -28,8 +29,9 @@ app.use('/login', login);
 app.use('/registration', registration);
 app.use('/',login);                   //index page ==>request bypass to login page
 app.use('/home',home);
+app.use('/blog',blog);
+app.use('/events',events);
 app.use('/logout',logout);
-app.use('/admin', admin);
 
 
 //ROUTER
