@@ -2,34 +2,19 @@
 <head>
     <link rel="stylesheet" href="/abc/css/bootstrap.min.css">
     <link rel="stylesheet" href="/abc/css/home.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <script src="/abc/js/modernizer.js"></script>
 </head>
 <body> 
+
     <% include ../common/header.ejs %>
-
-        <div class="container h-50">
-            <div class="d-flex justify-content-center h-100">
-                <div class="searchbar">
-                  <input class="search_input" type="text" name="" placeholder="Search here...">
-                  <a href="" class="search_icon"><i class="fas fa-search"></i></a>
-                </div>
-            </div>
-        </div>
-
-
-        <div id="wrapper">
+    
+    <div id="wrapper">
+        <div class="section">
             <div class="container">
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <nav class="travel-filter wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                            <ul>
-                                <li><a class="btn btn-dark active" href="" data-filter="*">All</a></li>
-                                <li><a class="btn btn-dark" data-toggle="tooltip" data-placement="top" href="" data-filter=".cat1">Blog</a></li>
-                                <li><a class="btn btn-dark" href="" data-toggle="tooltip" data-placement="top" data-filter=".cat2">Events</a></li>
-                            </ul>
-                        </nav>
+                <div class="row intro wow fadeIn">
+                    <div class="col-md-12 text-center my-3">
+                        <h1><strong>Blog</strong></h1>
+                        <p>Total Count</p>
                     </div>
                 </div>
 
@@ -152,10 +137,11 @@
                             </div>
                         </a>
                     </div>
-                </div>
+                </div>    
             </div>
         </div>
     </div>
+
     <script src="/abc/js/all.js"></script>
     <script src="/abc/js/home.js"></script>
     <script src="/abc/js/hoverdir.js"></script>  
