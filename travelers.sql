@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 31, 2019 at 04:11 PM
+-- Generation Time: Nov 02, 2019 at 11:32 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.4
 
@@ -38,13 +38,6 @@ CREATE TABLE `admins` (
   `profile_pic` varchar(110) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `admins`
---
-
-INSERT INTO `admins` (`id`, `name`, `email`, `phone`, `gender`, `password`, `profile_pic`) VALUES
-(1, 'ashik', 'kh.ashik96@gmail.com', '01681710719', 'Male', 'pass', '/abc/admin.png');
-
 -- --------------------------------------------------------
 
 --
@@ -66,8 +59,7 @@ CREATE TABLE `freaks` (
 --
 
 INSERT INTO `freaks` (`id`, `name`, `email`, `phone`, `gender`, `password`, `profile_pic`) VALUES
-(7, 'farhan', 'farhantanvin@gmail.com', '01676518531', 'male', '123', '/abc'),
-(8, 'ratul', 'ratul@gmail.com', '12345678', 'male', '123', '/abc');
+(14, 'farhantanvin', 'farhantanvin@gmail.com', '01676518531', 'male', '123456', '/abc');
 
 -- --------------------------------------------------------
 
@@ -91,7 +83,7 @@ CREATE TABLE `travel_agencies` (
 --
 
 INSERT INTO `travel_agencies` (`id`, `name`, `agency_name`, `email`, `phone`, `gender`, `password`, `profile_pic`) VALUES
-(1, 'rakin', 'rakin', 'rakin@gmail.com', '01676518531', 'male', '123', '/abc');
+(5, 'ratul', 'Ratul', 'ratul@gmail.com', '01676518531', 'male', '123456', '/abc');
 
 -- --------------------------------------------------------
 
@@ -101,6 +93,7 @@ INSERT INTO `travel_agencies` (`id`, `name`, `agency_name`, `email`, `phone`, `g
 
 CREATE TABLE `users` (
   `id` int(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `user_type` varchar(100) NOT NULL,
@@ -111,10 +104,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `user_type`, `active_status`) VALUES
-(8, 'farhantanvin@gmail.com', '123', 'freaks', '1'),
-(9, 'ratul@gmail.com', '123', 'freaks', '1'),
-(10, 'rakin@gmail.com', '123', 'agencies', '1');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `user_type`, `active_status`) VALUES
+(19, 'farhantanvin', 'farhantanvin@gmail.com', '123456', 'freaks', '1'),
+(20, 'ratul', 'ratul@gmail.com', '123456', 'agencies', '1');
 
 --
 -- Indexes for dumped tables
@@ -152,25 +144,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(110) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(110) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `freaks`
 --
 ALTER TABLE `freaks`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `travel_agencies`
 --
 ALTER TABLE `travel_agencies`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
