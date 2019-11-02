@@ -13,10 +13,10 @@ module.exports = {
 				}
 			});
 	},
-	getByemail:function(username, callback){
+	getByemail:function(email, callback){
 
 			var sql = "select * from users where email=?";
-			db.getResults(sql, [username], function(result){
+			db.getResults(sql, [email], function(result){
 				if(result.length > 0 ){
 					callback(result[0]);
 				}else{
@@ -49,8 +49,8 @@ module.exports = {
 	},
 	insert: function(user, callback){
 
-		var sql ="insert into users values('',?,?,?,?)";
-		db.execute(sql, [user.email,user.password,user.type,user.status], function(status){
+		var sql ="insert into users values('',?,?,?,?,?)";
+		db.execute(sql, [user.name,user.email,user.password,user.type,user.status], function(status){
 			callback(status);
 		});
 	},
@@ -101,7 +101,48 @@ alreadyHaveEmail: function(email, callback){
 			});
     
         
+	},
+    
+
+
+    getByemailFraaks:function(email, callback){
+
+			var sql = "select * from freaks where email=?";
+			db.getResults(sql, [email], function(result){
+				if(result.length > 0 ){
+					callback(result[0]);
+				}else{
+					callback([]);
+				}
+			});
+	},
+    
+   
+   getByemailFraaks:function(email, callback){
+
+			var sql = "select * from freaks where email=?";
+			db.getResults(sql, [email], function(result){
+				if(result.length > 0 ){
+					callback(result[0]);
+				}else{
+					callback([]);
+				}
+			});
+	},
+    getByemailAgencies:function(email, callback){
+
+			var sql = "select * from travel_agencies where email=?";
+			db.getResults(sql, [email], function(result){
+				if(result.length > 0 ){
+					callback(result[0]);
+				}else{
+					callback([]);
+				}
+			});
 	}
+     
+    
+    
     
     
 }
