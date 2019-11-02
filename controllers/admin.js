@@ -3,24 +3,49 @@ var userModel = require('./../models/user-model');
 var router = express.Router();
 
 router.get('/', function(request, response){
-	response.render('admin/index');
+    var user = {
+		name: "Ashik",
+		profile_pic:"/abc",
+	};
+    response.render('admin/index',user);
+    //response.render('admin/header',user);
 });
-router.get('/index', function(request, response){
-	response.render('admin/index');
-});
+
+
+
 router.get('/404', function(request, response){
-    response.render('admin/404');
+    var user = {
+		name: "Ashik",
+		profile_pic:"/abc",
+	};
+    response.render('admin/404',user);
 });
 router.get('/blank', function(request, response){
+    var user = {
+		name: "Ashik",
+		profile_pic:"/abc",
+	};
     response.render('admin/blank');
 });
 router.get('/buttons', function(request, response){
-    response.render('admin/buttons');
+    var user = {
+		name: "Ashik",
+		profile_pic:"/abc",
+	};
+    response.render('admin/buttons',user);
 });
 router.get('/charts', function(request, response){
+    var user = {
+		name: "Ashik",
+		profile_pic:"/abc",
+	};
     response.render('admin/charts');
 });
 router.get('/grids', function(request, response){
+    var user = {
+		name: "Ashik",
+		profile_pic:"/abc",
+	};
     response.render('admin/grids');
 });
 router.get('/icons', function(request, response){
