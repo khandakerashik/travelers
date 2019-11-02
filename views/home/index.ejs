@@ -6,8 +6,14 @@
     <script src="/abc/js/modernizer.js"></script>
 </head>
 <body> 
-    <% include ../common/header.ejs %>
-
+    
+<!--    header selected -->
+     <% if (login=="true") { %>
+     <% include ../common/user_header.ejs %>
+     <% } else { %>
+     <% include ../common/header.ejs %>
+     <% } %>
+    
         <div class="container h-50">
             <div class="d-flex justify-content-center h-100">
                 <div class="searchbar">

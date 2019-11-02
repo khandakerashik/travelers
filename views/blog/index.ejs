@@ -6,7 +6,12 @@
 </head>
 <body> 
 
-    <% include ../common/header.ejs %>
+    <!--    header selected -->
+     <% if (login=="true") { %>
+     <% include ../common/user_header.ejs %>
+     <% } else { %>
+     <% include ../common/header.ejs %>
+     <% } %>
     
     <div id="wrapper">
         <div class="section">
