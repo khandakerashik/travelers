@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2019 at 11:32 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- Generation Time: Nov 03, 2019 at 03:53 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -59,7 +59,8 @@ CREATE TABLE `freaks` (
 --
 
 INSERT INTO `freaks` (`id`, `name`, `email`, `phone`, `gender`, `password`, `profile_pic`) VALUES
-(14, 'farhantanvin', 'farhantanvin@gmail.com', '01676518531', 'male', '123456', '/abc');
+(14, 'farhantanvin', 'farhantanvin@gmail.com', '01676518531', 'male', '123456', '/abc'),
+(15, 'ashik', 'kh.ashik96@gmail.com', '12345678', 'male', '123456', '/abc');
 
 -- --------------------------------------------------------
 
@@ -106,7 +107,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `user_type`, `active_status`) VALUES
 (19, 'farhantanvin', 'farhantanvin@gmail.com', '123456', 'freaks', '1'),
-(20, 'ratul', 'ratul@gmail.com', '123456', 'agencies', '1');
+(20, 'ratul', 'ratul@gmail.com', '123456', 'agencies', '1'),
+(21, 'Khandaker Ashik', 'kh.ashik96@gmail.com', '123456', 'Admin', '1');
 
 --
 -- Indexes for dumped tables
@@ -150,7 +152,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `freaks`
 --
 ALTER TABLE `freaks`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `travel_agencies`
@@ -162,7 +164,7 @@ ALTER TABLE `travel_agencies`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
