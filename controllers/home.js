@@ -1,5 +1,7 @@
 var express = require('express');
 var userModel = require('./../models/user-model');
+var blogModel = require('./../models/blog-model');
+var EventModel = require('./../models/events-model');
 var router = express.Router();
 
 
@@ -15,7 +17,22 @@ router.get('/', function(request, response){
     };
     
     
-	response.render('home/index',user);
+    
+     blogModel.getAllblogHome(function(result){
+        EventModel.getAlleventsHome(function(e){
+     
+         
+		  response.render('home/index',{blog:result,events:e ,user:user});
+        //console.log(result);
+         
+         
+         
+	  });
+         
+		     
+	});   
+    
+	
 });
 
 
