@@ -6,12 +6,16 @@
 </head>
 <body> 
 
-    <!--    header selected -->
-     <% if (login=="true") { %>
-     <% include ../common/user_header.ejs %>
-     <% } else { %>
-     <% include ../common/header.ejs %>
-     <% } %>
+<!--    header selected -->
+<% if (login=="true") { %>
+    <% if(user_type=="Admin") {%>
+        <% include ../common/adminheader.ejs %>
+        <% } else { %>
+            <% include ../common/user_header.ejs %>
+        <% } %>
+<% } else { %>
+<% include ../common/header.ejs %>
+<% } %>
     
     <div id="wrapper">
         <div class="section">
