@@ -37,21 +37,24 @@
                       <th>Profile Picture</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>X tourism</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td><img src="/abc/images/portfolio_01.jpg" height="65px" width="100px"></td>
-                      <td>
-                        <a href="/admin/freaks"> <button class="btn btn-lg btn-block" type="submit">Ban</button></a>
-                      </td>
-                      <td>
-                            <a href="/admin/freaks"> <button class="btn btn-lg btn-block" type="submit">Delete</button></a>
-                      </td>
-                    </tr>
+                  <% for(var i=0; i < data.length; i++){ %>
+                    <tbody>
+                  
+                      <tr>
+                        <td><%= data[i].name %></td>
+                        <td><%= data[i].agency_name%></td>
+                        <td><%= data[i].email%></td>
+                        <td><%= data[i].phone %></td>
+                        <td><%= data[i].gender %></td>
+                        <td><img src="<%= data[i].profile_pic %>" height="65px" width="100px"></td>
+                        <td>
+                          <a href="/admin/freaks/ban"> <button class="btn btn-lg btn-block" type="submit">Ban</button></a>
+                        </td>
+                        <td>
+                              <a href="/admin/freaks/delete"> <button class="btn btn-lg btn-block" type="submit">Delete</button></a>
+                        </td>
+                      </tr>
+                      <% } %>
                   </tbody>
                 </table>
               </div>

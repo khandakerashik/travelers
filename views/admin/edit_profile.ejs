@@ -26,37 +26,22 @@
             <div class="card-body">
               <form class="form-signin" method="post">
                 <div class="form-label-group my-4">
-                  <input type="text" id="inputName" name="inputName" class="form-control" placeholder="Name" required>
+                  <input type="text" id="inputName" name="inputName" class="form-control" placeholder="Name" required value="<%= data.name %>">
                   <label for="inputName">Name</label>
                 </div>
 
                 <div class="form-label-group my-4">
-                  <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email address" required>
+                  <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email address" required value="<%= data.email %>">
                   <label for="inputEmail">Email address</label>
                 </div>
 
-                 <div class="form-label-group my-4">
-                  <input type="text" id="inputAgencyname" name="inputAgencyname" class="form-control" placeholder="Email address" required>
-                  <label for="inputAgencyname">Agency name</label>
-                </div>
-
                 <div class="form-label-group my-4">
-                  <input type="text" id="inputPhone" name="inputPhone" class="form-control" placeholder="Phone No" required>
+                  <input type="text" id="inputPhone" name="inputPhone" class="form-control" placeholder="Phone No" required value="<%= data.phone %>">
                   <label for="inputPhone">Phone No</label>
                 </div>
 
                 <div class="form-label-group my-4">
-                  <div class="form-group">
-                    <select class="form-control" id="inputGender" name="inputGender">
-                      <option>Select your Gender</option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-label-group my-4">
-                  <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" required>
+                  <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" required >
                   <label for="inputPassword">Password</label>
                 </div>
                 
