@@ -13,6 +13,17 @@ module.exports = {
 				}
 			});
 	},
+	getAdminByEmail: function(email, callback){
+
+		var sql = "select * from admins where email=?";
+		db.getResults(sql, [email], function(result){
+			if(result.length > 0 ){
+				callback(result[0]);
+			}else{
+				callback([]);
+			}
+		});
+},
 	getByemail:function(email, callback){
 
 			var sql = "select * from users where email=?";
@@ -37,6 +48,30 @@ module.exports = {
 	},
 	getAll: function(callback){
 		var sql = "select * from users";
+		
+		db.getResults(sql, [], function(results){
+			
+			if(results.length > 0){
+				callback(results);
+			}else{
+				callback([]);
+			}
+		});	
+	},
+	getAllFreaks: function(callback){
+		var sql = "select * from freaks";
+		
+		db.getResults(sql, [], function(results){
+			
+			if(results.length > 0){
+				callback(results);
+			}else{
+				callback([]);
+			}
+		});	
+	},
+	getAllAgencies: function(callback){
+		var sql = "select * from travel_agencies";
 		
 		db.getResults(sql, [], function(results){
 			
@@ -75,10 +110,35 @@ module.exports = {
 			});
 		},
 
+		insertAdmins: function(add, callback){
+
+			
+			var sql ="insert into admins values('',?,?,?,?,?,?)";
+			console.log(sql);
+			db.execute(sql, [add.name,add.email,add.phone,add.gender,add.password,add.profile_pic], function(status){
+				callback(status);
+			});
+		},
+
+
 	update: function(user, callback){
 		var sql ="update users set username=?, password=? where id=?";
 	
 		db.execute(sql, [user.username, user.password, user.id], function(status){
+			callback(status);
+		});
+	},
+	updateByEmail: function(user, callback){
+		var sql ="update users set name=?, email=?, password=? where email=user.email";
+	
+		db.execute(sql, [user.name, user.email, user.password], function(status){
+			callback(status);
+		});
+	},
+	updateAdminByEmail: function(add, callback){
+		var sql ="update admins set name=?, email=?, phone=?, gender=?, password=?, profile_pic=? where email=add.email";
+	
+		db.execute(sql, [add.name, add.email, add.phone,add.gender, add.password ,add.profile_pic], function(status){
 			callback(status);
 		});
 	},
@@ -88,6 +148,19 @@ module.exports = {
 			callback(status);
 		});
 	},
+
+	totaluser:function(callback){
+
+		var sql = "SELECT COUNT(id) AS id FROM users";
+		db.getResults(sql,[], function(result){
+			if(result.length > 0 ){
+				callback(result[0]);
+				console.log(result);
+			}else{
+				callback([]);
+			}
+		});
+},
     
 alreadyHaveEmail: function(email, callback){
             
