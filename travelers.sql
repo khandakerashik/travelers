@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2019 at 03:53 PM
+-- Generation Time: Nov 03, 2019 at 09:13 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -38,6 +38,14 @@ CREATE TABLE `admins` (
   `profile_pic` varchar(110) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `name`, `email`, `phone`, `gender`, `password`, `profile_pic`) VALUES
+(1, 'test', 'test@gmail.com', '544221564', 'Male', '123456', '/abc/'),
+(2, 'Khandaker Ashik', 'kh.ashik96@gmail.com', '01681710719', 'male', 'pass', '/abc/');
+
 -- --------------------------------------------------------
 
 --
@@ -60,7 +68,7 @@ CREATE TABLE `freaks` (
 
 INSERT INTO `freaks` (`id`, `name`, `email`, `phone`, `gender`, `password`, `profile_pic`) VALUES
 (14, 'farhantanvin', 'farhantanvin@gmail.com', '01676518531', 'male', '123456', '/abc'),
-(15, 'ashik', 'kh.ashik96@gmail.com', '12345678', 'male', '123456', '/abc');
+(15, 'ashik', 'kh.ashik96@gmail.com', '12345678', 'male', '123456', '/abc/images/freaks.png');
 
 -- --------------------------------------------------------
 
@@ -108,7 +116,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `user_type`, `active_status`) VALUES
 (19, 'farhantanvin', 'farhantanvin@gmail.com', '123456', 'freaks', '1'),
 (20, 'ratul', 'ratul@gmail.com', '123456', 'agencies', '1'),
-(21, 'Khandaker Ashik', 'kh.ashik96@gmail.com', '123456', 'Admin', '1');
+(21, 'Khandaker Ashik', 'kh.ashik96@gmail.com', '123456', 'Admin', '1'),
+(23, 'test', 'test@gmail.com', '123456', 'Admin', '1'),
+(28, 'Khandaker Ashik', 'kh.ashik96@gmail.com', 'pass', 'Admin', '1');
 
 --
 -- Indexes for dumped tables
@@ -146,7 +156,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(110) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(110) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `freaks`
@@ -164,7 +174,7 @@ ALTER TABLE `travel_agencies`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
