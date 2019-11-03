@@ -8,15 +8,7 @@
 <body> 
     
 <!--    header selected -->
-     <% if (login=="true") { %>
-            <% if(user_type=="Admin") {%>
-                <% include ../common/adminheader.ejs %>
-                <% } else { %>
-                    <% include ../common/user_header.ejs %>
-                <% } %>
-     <% } else { %>
-     <% include ../common/header.ejs %>
-     <% } %>
+     <% include ../common/user_header.ejs %>
     
         <div class="container h-50">
             <div class="d-flex justify-content-center h-100">
@@ -47,121 +39,37 @@
 
 
 
-                    <div class="post-media pitem item-w1 item-h1">
-                        <a href="" title="">
-                            <img src="/abc/images/portfolio_01.jpg" alt="" class="img-responsive">
-                            <div>
-                                <h3>Lost Friends <strong>Ryan Lewis</strong> <small>Ryan Lewis</small> </h3>
-                            </div>
-                        </a>
-                    </div>
-
+                   
+                    <% for(var i=0 ; i < events.length; i++ ) { %>
                     <div class="post-media pitem item-w1 item-h1 cat2">
-                        <a href="single-porfolio.html" title="">
-                            <img src="/abc/images/portfolio_02.jpg" alt="" class="img-responsive">
+                        <a href="/events/event_details/<%=events[i].id%>" title="">
+                            <img src="<%=events[i].image%>" alt="" class="img-responsive">
                             <div>
-                                <h3>Succulents <strong>Chris Ota</strong><small>Chris Ota</small></h3>
+                                <h3><%=events[i].title%> <strong><%=events[i].date%></strong><small><%=events[i].catagory%></small></h3>
                             </div>
                         </a>
                     </div>
-
+                    
+                    <% } %>
+                    
+                    
+                    <% for(var i=0 ; i < blog.length; i++ ) { %>
                     <div class="post-media pitem item-w1 item-h1 cat1">
-                        <a href="single-porfolio.html" title="">
-                            <img src="/abc/images/portfolio_03.jpg" alt="" class="img-responsive">
+                        <a href="/blog/blog_details/<%=blog[i].id%>" title="">
+                            <img src="<%=blog[i].image%>" alt="" class="img-responsive">
                             <div>
-                                <h3>Realistic Gold Iphone 7 <strong>Anthony Boyd</strong><small>Anthony Boyd</small></h3>
+                                <h3><%=blog[i].title %> <strong><%=blog[i].name %></strong><small><%=blog[i].catagory %></small></h3>
                             </div>
                         </a>
                     </div>
+                    
+                    <% } %>
 
 
 
 
 
 
-
-
-
-                     <div class="post-media pitem item-w1 item-h1 cat2">
-                        <a href="single-porfolio.html" title="">
-                            <img src="/abc/images/portfolio_04.jpg" alt="" class="img-responsive">
-                            <div>
-                                <h3>Amy Winehouse <strong>Daniel Nolen</strong> <strong>Daniel Nolen</strong></h3>
-                            </div>
-                        </a>
-                    </div>
-
-                     <div class="post-media pitem item-w1 item-h1 cat1">
-                        <a href="single-porfolio.html" title="">
-                            <img src="/abc/images/portfolio_05.jpg" alt="" class="img-responsive">
-                            <div>
-                                <h3>Featured brands <strong>lifeasdave</strong><strong>Daniel Nolen</strong></h3>
-                            </div>
-                        </a>
-                    </div>
-
-                     <div class="post-media pitem item-w1 item-h1 cat2">
-                        <a href="single-porfolio.html" title="">
-                            <img src="/abc/images/portfolio_06.jpg" alt="" class="img-responsive">
-                            <div>
-                                <h3>Harry Potter <strong>Ayda Oz</strong></h3>
-                            </div>
-                        </a>
-                    </div>
-
-                     <div class="post-media pitem item-w1 item-h1 cat1">
-                        <a href="single-porfolio.html" title="">
-                            <img src="/abc/images/portfolio_07.jpg" alt="" class="img-responsive">
-                            <div>
-                                <h3>App shop nike shoes <strong>tomas_pohl</strong></h3>
-                            </div>
-                        </a>
-                    </div>
-
-                     <div class="post-media pitem item-w1 item-h1 cat2">
-                        <a href="single-porfolio.html" title="">
-                            <img src="/abc/images/portfolio_08.jpg" alt="" class="img-responsive">
-                            <div>
-                                <h3>Eames chair <strong>Alessandra</strong></h3>
-                            </div>
-                        </a>
-                    </div>
-
-                     <div class="post-media pitem item-w1 item-h1 cat1">
-                        <a href="single-porfolio.html" title="">
-                            <img src="/abc/images/portfolio_12.jpg" alt="" class="img-responsive">
-                            <div>
-                                <h3>Daily UI #004 Calculator <strong>X5 Fisher</strong></h3>
-                            </div>
-                        </a>
-                    </div>
-
-                     <div class="post-media pitem item-w1 item-h1 cat2">
-                        <a href="single-porfolio.html" title="">
-                            <img src="/abc/images/portfolio_11.jpg" alt="" class="img-responsive">
-                            <div>
-                                <h3>Legoland Billboard <strong>Mel Moyer</strong></h3>
-                            </div>
-                        </a>
-                    </div>
-
-                     <div class="post-media pitem item-w1 item-h1 cat1">
-                        <a href="single-porfolio.html" title="">
-                            <img src="/abc/images/portfolio_09.jpg" alt="" class="img-responsive">
-                            <div>
-                                <h3>Featured brands <strong>lifeasdave</strong></h3>
-                            </div>
-                        </a>
-                    </div>
-
-                     <div class="post-media pitem item-w1 item-h1 cat2">
-                        <a href="single-porfolio.html" title="">
-                            <img src="/abc/images/portfolio_10.jpg" alt="" class="img-responsive">
-                            <div>
-                                <h3>B Icon <strong>jeonglayeong</strong></h3>
-                            </div>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>

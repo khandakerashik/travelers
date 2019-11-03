@@ -18,24 +18,21 @@
                         <div class="widget">
                             <div class="blog-single">
                                 <div class="post-media wow fadeIn">
-                                    <img src="/abc/images/single.jpg" alt="" class="img-responsive">
+                                    <img src="<%=blog.image%>" alt="" class="img-responsive">
                                 </div>
 
                                 <div class="blog-meta">
-                                    <small>Sep 25, 2016</small>
-                                    <small>by <a href="">Martin</a></small>
-                                    <small class="hidden-xs">Blog</small>
+                                    <small><%=blog.date%></small>
+                                    <small>by <a href=""><%=blog.name%></a></small>
+                                    <small class="hidden-xs"><%=blog.catagory%></small>
                                 </div>
 
                                 <div class="blog-desc">
-                                    <h3 class="post-title">Learning Lost Type Patches</h3>
-                                    <p class="lead">Suspendisse euismod rutrum aliquet. Nullam posuere ante sed lacus laoreet malesuada. Vivamus venenatis nisl a dui tincidunt, vel tincidunt sem laoreet. Aliquam nec porttitor odio</p>
+                                    <h3 class="post-title"><%=blog.title%></h3>
+                                    <p class="lead">
 
-                                    <p class="drop-cap"> Praesent sed lectus in augue condimentum interdum. Etiam vel nisi eget sapien ornare sodales quis id lacus. Aenean tristique finibus euismod. Nulla tristique sem vel ex mollis, congue dapibus magna fermentum. Pellentesque pellentesque, ex vel consectetur ultrices, odio purus porta diam, id fringilla sem dui sed felis. Nunc vestibulum commodo magna consectetur interdum. Aenean tempus ac mi in feugiat. Quisque in magna est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor elementum porta. Mauris ante nisi, porta id placerat eget, ultricies ut magna. Integer ac nulla consequat, efficitur ligula vitae, tincidunt dolor. Aliquam accumsan at libero in iaculis. Praesent a ultrices risus. Nulla ultrices velit ut tempor eleifend. Curabitur pulvinar vulputate magna, sed fringilla purus porta sed. Nunc molestie leo quis ex consectetur cursus. Cras in dapibus nunc, vel congue magna. Morbi sagittis aliquam imperdiet. Duis lobortis hendrerit leo eu sagittis. Aliquam quam justo, mattis quis pellentesque congue, malesuada ac metus. Nulla facilisi. </p>
-
-                                    <p> Fusce sit amet massa quam. Nam fermentum lacinia neque, id mattis lorem vestibulum ac. Nulla facilisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent efficitur felis ut magna egestas, in rutrum ipsum condimentum. Praesent nibh odio, condimentum ut rhoncus vitae, pharetra ut neque. Maecenas porttitor et metus vitae gravida. Quisque sollicitudin enim ligula, in rutrum arcu condimentum a. Curabitur vehicula at tellus sit amet venenatis. Duis et commodo metus. Phasellus eu congue velit, mattis eleifend mauris. Curabitur eu suscipit erat, auctor commodo enim. Cras posuere, tortor vitae hendrerit malesuada, diam nunc dignissim dolor, dictum lacinia leo lacus non nulla. </p>
-
-                                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor elementum porta. Mauris ante nisi, porta id placerat eget, ultricies ut magna. Integer ac nulla consequat, efficitur ligula vitae, tincidunt dolor. Aliquam accumsan at libero in iaculis. Praesent a ultrices risus. Nulla ultrices velit ut tempor eleifend. Curabitur pulvinar vulputate magna, sed fringilla purus porta sed. Nunc molestie leo quis ex consectetur cursus. Cras in dapibus nunc, vel congue magna. Morbi sagittis aliquam imperdiet. Duis lobortis hendrerit leo eu sagittis. Aliquam quam justo, mattis quis pellentesque congue, malesuada ac metus. Nulla facilisi. </p>
+                                    <p class="drop-cap"> 
+                                        <%=blog.description %>
                                 </div>
                             </div>
                         </div>
