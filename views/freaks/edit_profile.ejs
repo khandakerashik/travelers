@@ -26,37 +26,25 @@
             <div class="card-body">
               <form class="form-signin" method="post">
                 <div class="form-label-group my-4">
-                  <input type="text" id="inputName" name="inputName" class="form-control" placeholder="Name" required>
+                  <input type="text" id="inputName" name="inputName" value="<%=data.name%>" class="form-control" placeholder="Name" required>
                   <label for="inputName">Name</label>
                 </div>
+                  
 
                 <div class="form-label-group my-4">
-                  <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email address" required>
-                  <label for="inputEmail">Email address</label>
-                </div>
-
-                <div class="form-label-group my-4">
-                  <input type="text" id="inputPhone" name="inputPhone" class="form-control" placeholder="Phone No" required>
+                  <input type="text" id="inputPhone" name="inputPhone" value="<%=data.phone%>" class="form-control" placeholder="Phone No" required>
                   <label for="inputPhone">Phone No</label>
                 </div>
 
-                <div class="form-label-group my-4">
-                  <div class="form-group">
-                    <select class="form-control" id="inputGender" name="inputGender">
-                      <option>Select your Gender</option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                    </select>
-                  </div>
-                </div>
+                
 
                 <div class="form-label-group my-4">
-                  <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" required>
+                  <input type="password" id="inputPassword" name="inputPassword" value="<%=data.password%>" class="form-control" placeholder="Password" required>
                   <label for="inputPassword">Password</label>
                 </div>
                 
                 <div class="form-label-group my-4">
-                  <input type="password" id="inputConfirmPassword" name="inputConfirmPassword" class="form-control" placeholder="Password" required>
+                  <input type="password" id="inputConfirmPassword" name="inputConfirmPassword" value="<%=data.password%> "class="form-control" placeholder="Password" required>
                   <label for="inputConfirmPassword">Confirm password</label>
                 </div>
 

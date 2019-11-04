@@ -20,36 +20,55 @@
         </div>
       </div>
 
-      
+    
       <div class="row">
         <div class="col-md-12">
           <div class="tile">
             <div class="tile-body">
               <div class="table-responsive">
+                  
                 <table class="table table-hover table-bordered" id="sampleTable">
-                  <thead>
+             
+                  <thead> 
+                   
                     <tr>
                       <th>Tittle</th>
-                      <th>Name(Post By)</th>
-                      <th>Date</th>
-                      <th>Description</th>
+                      <th>Location</th>
+                      <th>Post Date</th>
                       <th>Image</th>
                       <th>Edit</th>
+                      <th>Delete Blog</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td><img  src="/abc/images/portfolio_01.jpg" height="65px" width="100px"></td>
+                   
+                <% for(var i=0 ; i < blog.length; i++ ) { %>
+                      
+                  <tbody>    
+                    
+                      
+                       
+                      <tr>
+                     
+                      <td><%=blog[i].title%></td>
+                      <td><%=blog[i].location%></td>
+                      <td><%=blog[i].date%></td>
+                      <td><img  src="<%=blog[i].image%>" height="65px" width="100px"></td>
                       <td>
-                        <a href="/freaks/edit"> <button class="btn btn-lg btn-block" type="submit">Edit</button></a>
+                        <a href="/freaks/edit/<%=blog[i].id%>"> <button class="btn btn-lg btn-block" type="submit">Edit</button></a>
+                          
                       </td>
+                          
+                      <td>
+                        <a href="/freaks/delete/<%=blog[i].id%>"> <button class="btn btn-lg btn-block" type="submit" >Delete</button></a>
+                      </td>
+                        
                     </tr>
+                      
                   </tbody>
+                <% }%>
                 </table>
+                 
+                  
               </div>
             </div>
           </div>
