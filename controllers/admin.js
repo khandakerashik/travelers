@@ -71,25 +71,21 @@ router.get('/editprofile', function(request, response){
 router.post('/editprofile', function(request, response){
   var add = {
     name: request.body.inputName,
-    email: request.body.inputEmail,
+    email: request.session.data.email,
     phone: request.body.inputPhone,
     gender: "male",
     password:request.body.inputPassword,
     profile_pic:"/abc/",
   };
-  var user = {
-    name: request.body.inputName,
-    email: request.body.inputEmail,
-    password:request.body.inputPassword,
-  };
 
-  userModel.updateAdminByEmail(add,request.session.data.email, function(status){	
+  userModel.updateAdminByEmail(add, function(status){	
     if(status)
     {
-        userModel.updateByEmail(user,request.session.data.email, function(status){	
+        userModel.updateByEmail(add, function(status){	
        if(status){
          console.log("update successful");
-         response.redirect("/admin/edit_profile");
+         
+         response.redirect("/admin/editprofile");
       }else{
         console.log("Update Failed!");
          response.redirect("/admin/addadmin");	
@@ -169,6 +165,7 @@ router.post('/freaks/ban', function(request, response){
       login:request.session.user_login
         
     };
+    
   response.render('admin/freaks',{user:user});
 });
 
@@ -186,14 +183,16 @@ router.get('/agencies', function(request, response){
 });
 
 router.get('/pendingevents', function(request, response){
-    var user ={
-        name:request.session.data.name,
-        email:request.session.data.email,
-        user_type:request.session.data.user_type,
-        login:request.session.user_login
-          
-      };
-    response.render('admin/pendingevents',{user:user});
+  var user ={
+    name:request.session.data.name,
+    email:request.session.data.email,
+    user_type:request.session.data.user_type,
+    login:request.session.user_login
+      
+  };
+  userModel.getpendingevents(function(results){
+    response.render('admin/pendingevents', {user:user, data: results});		
+  });
 });
 router.get('/message', function(request, response){
     var user ={
@@ -216,15 +215,18 @@ router.get('/sendmessage', function(request, response){
     response.render('admin/sendmessage',{user:user});
 });
 router.get('/notifications', function(request, response){
-    var user ={
-        name:request.session.data.name,
-        email:request.session.data.email,
-        user_type:request.session.data.user_type,
-        login:request.session.user_login
-          
-      };
-    response.render('admin/notifications',{user:user});
+  var user ={
+    name:request.session.data.name,
+    email:request.session.data.email,
+    user_type:request.session.data.user_type,
+    login:request.session.user_login
+      
+  };
+  userModel.getnotifications(function(results){
+    response.render('admin/notifications', {user:user, data: results});		
+  });
 });
+
 
   
   module.exports = router;
