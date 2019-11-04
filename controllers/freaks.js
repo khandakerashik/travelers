@@ -179,9 +179,17 @@ router.post('/edit_profile', function(request, response){
             if(status)
             {
             
+                
+                
                 userModel.getByemailFreaks(request.session.data.email, function(result){
 
+              var user ={
+              name:result.name,
+              email:result.email,
+              user_type:request.session.data.user_type,
+              login:request.session.user_login
 
+              };
                 response.render('freaks/index',{data:result,user:user});
                 }); 
                 
