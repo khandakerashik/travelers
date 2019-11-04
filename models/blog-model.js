@@ -52,7 +52,45 @@ getAllblog: function(callback){
 					callback([]);
 				}
 			});
+	},
+    
+      getAllblogByEmail: function(email,callback){
+
+			var sql = "select * from blog where postby =?";
+			db.getResults(sql, [email], function(result){
+				if(result.length > 0 ){
+					callback(result);
+				}else{
+					callback([]);
+				}
+			});
+	},
+    
+    
+    
+    
+    
+    
+    insertBlog: function(blog, callback){
+
+		var sql ="insert into blog values('',?,?,?,?,?,?,?,?)";
+		db.execute(sql, [blog.title,blog.description,blog.location,blog.image,blog.date,blog.postby,blog.name,blog.catagory], function(status){
+			callback(status);
+		});
+	},
+    
+    
+    updateBlog: function(blog, callback){
+		var sql ="update blog set title=?,location=? ,description=?,image=?, where id=?";
+	
+		db.execute(sql, [blog.title,blog.location,blog.description,blog.image,blog.id], function(status){
+			callback(status);
+		});
 	}
+    
+    
+    
+    
     
 
     
