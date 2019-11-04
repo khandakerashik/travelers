@@ -8,8 +8,15 @@
 </head>
 <body>
 
-    <% include ../common/user_header.ejs %>
-
+    <% if (user.login=="true") { %>
+        <% if(user.user_type=="Admin") {%>
+            <% include ../common/adminheader.ejs %>
+            <% } else { %>
+                <% include ../common/user_header.ejs %>
+            <% } %>
+    <% } else { %>
+    <% include ../common/header.ejs %>
+    <% } %>
     <div id="wrapper">
         <div class="section">
             <div class="container">
