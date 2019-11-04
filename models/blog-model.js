@@ -81,18 +81,22 @@ getAllblog: function(callback){
     
     
     updateBlog: function(blog, callback){
-		var sql ="update blog set title=?,location=? ,description=?,image=?, where id=?";
+		var sql ="update blog set title=?,location=? ,description=?,image=? where id=?";
 	
 		db.execute(sql, [blog.title,blog.location,blog.description,blog.image,blog.id], function(status){
 			callback(status);
 		});
+	},
+    
+    
+    
+    
+delete: function(id, callback){
+		var sql = "delete from blog where id=?";
+		db.execute(sql, [id], function(status){
+			callback(status);
+		});
 	}
-    
-    
-    
-    
-    
-
     
     
     
