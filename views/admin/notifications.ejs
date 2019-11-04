@@ -15,17 +15,19 @@
     <main class="app-content">
 
       <div class="app-title">
+          
         <div>
           <h1>Notification</h1>
         </div>
+          
       </div>
 
       
-
+      <% for(var i=0; i < data.length; i++){ %>
       <div class="alert alert-info">
-        <strong><a href="/admin/pendingevents">"Cox's Bazar Tour"</a> </strong>&nbsp event is offered by X. Item is on pending list.
+        <strong><a href="/admin/pendingevents">"<%= data[i].tittle %>"</a> </strong>&nbsp event is offered by  <%= data[i].postby %> from <%= data[i].agencyname %>. Item is on pending list.
       </div>
-
+      <% } %>
 
 
     </main>

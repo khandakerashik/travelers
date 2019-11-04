@@ -33,26 +33,26 @@
                       <th>Agency Name</th>
                       <th>Details</th>
                       <th>Capacity</th>
-                      <th>Person Capacity</th>
-                      <th>Price Per Person</th>
+                      <th>Price Per  Person</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
-                      <td>
-                        <a href="/admin/pendingevents"> <button class="btn btn-lg btn-block" type="submit">Approve</button></a>
-                      </td>
-                      <td>
-                            <a href="/admin/pendingevents"> <button class="btn btn-lg btn-block" type="submit">Delete</button></a>
-                       </td>
-                    </tr>
-                  </tbody>
+                  <% for(var i=0; i < data.length; i++){ %>
+                    <tbody>
+                      <tr>
+                        <td><%= data[i].title %></td>
+                        <td><%= data[i].agency_name%></td>
+                        <td><%= data[i].details %></td>
+                        <td><%= data[i].Capacity %></td>
+                        <td><%= data[i].Price_person %></td>
+                        <td>
+                          <a href="/admin/pendingposts/ban"> <button class="btn btn-lg btn-block" type="submit">Approve</button></a>
+                        </td>
+                        <td>
+                              <a href="/admin/pendingposts/delete"> <button class="btn btn-lg btn-block" type="submit">Delete</button></a>
+                        </td>
+                      </tr>
+                      <% } %>
+                    </tbody>
                 </table>
               </div>
             </div>
