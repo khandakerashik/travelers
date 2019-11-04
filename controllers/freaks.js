@@ -151,11 +151,12 @@ router.post('/edit_profile', function(request, response){
                 phone: request.body.inputPhone,
                 gender:  request.body.inputGender,
                 password:request.body.inputPassword,
-                profile_pic:"/abc"
+                profile_pic:"/abc",
+                email:request.session.data.email
 
               };
     
-    console.log(request.body.inputname);
+    
     var user ={
               name:request.session.data.name,
               email:request.session.data.email,
@@ -172,16 +173,24 @@ router.post('/edit_profile', function(request, response){
 		
 		if(status)
         {
-        
             
-            userModel.getByemailFreaks(request.session.data.email, function(result){
-              
+            userModel.update(update, function(status){
+                
+            if(status)
+            {
+            
+                userModel.getByemailFreaks(request.session.data.email, function(result){
+
+
+                response.render('freaks/index',{data:result,user:user});
+                }); 
+                
+            }
+            
+                
+		  });
     
-            response.render('freaks/index',{data:result,user:user});
-            });  
-	     
-			
-		}
+        }
         
         else
         
@@ -239,14 +248,6 @@ router.post('/write_blog', function(request, response){
 		if(status)
 		{
             
-          var user ={
-      name:request.session.data.name,
-      email:request.session.data.email,
-      user_type:request.session.data.user_type,
-      login:request.session.user_login
-        
-    };
-    
     
         blogModel.blogCount(function(count){
          
