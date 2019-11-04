@@ -93,18 +93,32 @@ router.get('/delete_blog', function(request, response){
 
 router.get('/pin_post', function(request, response){
     //console.log(request.cookies['user']);
+    var user ={
+              name:request.session.data.name,
+              email:request.session.data.email,
+              user_type:request.session.data.user_type,
+              login:request.session.user_login
 
-	response.render('freaks/pin_post');
+              };
+
+	response.render('freaks/pin_post',{user:user});
 });
 
 router.get('/book_events', function(request, response){
     //console.log(request.cookies['user']);
+    var user ={
+              name:request.session.data.name,
+              email:request.session.data.email,
+              user_type:request.session.data.user_type,
+              login:request.session.user_login
 
-	response.render('freaks/book_events');
+              };
+
+	response.render('freaks/book_events',{user:user});
 });
 
 router.get('/edit/:id', function(request, response){
-    //console.log(request.cookies['user']);
+   
     
      var user ={
               name:request.session.data.name,
@@ -123,21 +137,41 @@ router.get('/edit/:id', function(request, response){
 });
 
 router.get('/history', function(request, response){
-    //console.log(request.cookies['user']);
+    var user ={
+              name:request.session.data.name,
+              email:request.session.data.email,
+              user_type:request.session.data.user_type,
+              login:request.session.user_login
 
-	response.render('freaks/history');
+              };
+
+	response.render('freaks/history',{user:user});
 });
 
 router.get('/messages', function(request, response){
-    //console.log(request.cookies['user']);
+    
+    
+    var user ={
+              name:request.session.data.name,
+              email:request.session.data.email,
+              user_type:request.session.data.user_type,
+              login:request.session.user_login
 
-	response.render('freaks/messages');
+              };
+
+	response.render('freaks/messages',{user:user});
 });
 
 router.get('/notifications', function(request, response){
-    //console.log(request.cookies['user']);
+ var user ={
+              name:request.session.data.name,
+              email:request.session.data.email,
+              user_type:request.session.data.user_type,
+              login:request.session.user_login
 
-	response.render('freaks/notifications');
+              };
+
+	response.render('freaks/notifications',{user:user});
 });
 
 
@@ -257,15 +291,16 @@ router.post('/write_blog', function(request, response){
 		{
             
     
-        blogModel.blogCount(function(count){
-         
-        blogModel.getAllblog(function(results){
-		response.render('blog/index',{blog: results,user:user,count:count});  
-        //console.log(count);
-	});  
-		
-        
-	});  
+//        blogModel.blogCount(function(count){
+//         
+//        blogModel.getAllblog(function(results){
+//		response.render('blog/index',{blog: results,user:user,count:count});  
+//        //console.log(count);
+//	});  
+//		
+//        6
+//	});  
+         response.redirect('../../blog');   
             
             
         }
@@ -281,6 +316,60 @@ router.post('/write_blog', function(request, response){
     
 	
 });
+
+
+
+
+router.post('/edit/:id', function(request, response){
+    //console.log(request.cookies['user']);
+
+    
+       var blog =
+        {
+        
+         title:request.body.inputTittle,
+         location:request.body.inputLocation,
+         description:request.body.inputDescription,
+         image:"/abc/images/portfolio_01.jpg",
+         postby:request.session.data.email,
+         name:request.session.data.name,
+         catagory:"blog",
+         id:request.params.id
+        
+        };
+    
+    console.log(request.params.id);
+     
+   blogModel.updateBlog(blog, function(status){
+         
+         
+		
+		if(status)
+            {
+
+             response.redirect('../../blog');   
+                
+
+            }
+
+        else
+            {
+
+                
+              
+
+            }
+
+
+    
+  });
+
+
+
+});
+
+
+
 
 
 
