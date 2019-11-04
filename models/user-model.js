@@ -24,6 +24,17 @@ module.exports = {
 			}
 		});
 },
+getAgencyByEmail: function(email, callback){
+
+	var sql = "select * from travel_agencies where email=?";
+	db.getResults(sql, [email], function(result){
+		if(result.length > 0 ){
+			callback(result[0]);
+		}else{
+			callback([]);
+		}
+	});
+},
 	getByemail:function(email, callback){
 
 			var sql = "select * from users where email=?";
@@ -58,6 +69,30 @@ module.exports = {
 			}
 		});	
 	},
+	getnotifications: function(callback){
+		var sql = "SELECT * FROM `events` order by ID DESC ";
+		
+		db.getResults(sql, [], function(results){
+			
+			if(results.length > 0){
+				callback(results);
+			}else{
+				callback([]);
+			}
+		});	
+	},
+	getpendingevents: function(callback){
+		var sql = "select * from pendingevents";
+		
+		db.getResults(sql, [], function(results){
+			
+			if(results.length > 0){
+				callback(results);
+			}else{
+				callback([]);
+			}
+		});	
+	},
 	getAllFreaks: function(callback){
 		var sql = "select * from freaks";
 		
@@ -72,6 +107,18 @@ module.exports = {
 	},
 	getAllAgencies: function(callback){
 		var sql = "select * from travel_agencies";
+		
+		db.getResults(sql, [], function(results){
+			
+			if(results.length > 0){
+				callback(results);
+			}else{
+				callback([]);
+			}
+		});	
+	},
+	getAllEvents: function(callback){
+		var sql = "select * from events";
 		
 		db.getResults(sql, [], function(results){
 			
@@ -120,6 +167,14 @@ module.exports = {
 			});
 		},
 
+		insertEvents: function(add, callback){
+			var sql ="insert into events values('',?,?,?,?,?,?,?,?,?,?)";
+			console.log(sql);
+			db.execute(sql, [add.tittle,add.postby,add.agencyname,add.place,add.date,add.description,add.person,add.price,add.image,add.category], function(status){
+				callback(status);
+			});
+		},
+
 
 	update: function(user, callback){
 		var sql ="update users set username=?, password=? where id=?";
@@ -128,17 +183,18 @@ module.exports = {
 			callback(status);
 		});
 	},
-	updateByEmail: function(user, callback){
-		var sql ="update users set name=?, email=?, password=? where email=user.email";
-	
-		db.execute(sql, [user.name, user.email, user.password], function(status){
+
+	updateAdminByEmail: function(add, callback){
+		var sql ="update admins set name=?, email=?, phone=?, gender=?, password=?, profile_pic=? where email= ?";
+		console.log("adminup"+ add.email);
+		db.execute(sql, [add.name, add.email, add.phone,add.gender, add.password ,add.profile_pic, add.email], function(status){
 			callback(status);
 		});
 	},
-	updateAdminByEmail: function(add, callback){
-		var sql ="update admins set name=?, email=?, phone=?, gender=?, password=?, profile_pic=? where email=add.email";
-	
-		db.execute(sql, [add.name, add.email, add.phone,add.gender, add.password ,add.profile_pic], function(status){
+	updateByEmail: function(add, callback){
+		var sql ="update users set name=?, email=?, password=? where email=?";
+		console.log(add.email);
+		db.execute(sql, [add.name, add.email, add.password, add.email], function(status){
 			callback(status);
 		});
 	},
