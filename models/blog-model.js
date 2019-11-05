@@ -104,8 +104,8 @@ delete: function(id, callback){
     
     insertComment: function(comment, callback){
 
-		var sql ="insert into comments values('',?,?,?,?,?)";
-		db.execute(sql, [comment.text,comment.postby,comment.name,comment.postid,comment.date], function(status){
+		var sql ="insert into comments values('',?,?,?,?,?,?)";
+		db.execute(sql, [comment.text,comment.postby,comment.name,comment.postid,comment.blogpostemail,comment.date], function(status){
 			callback(status);
 		});
 	},
@@ -136,7 +136,25 @@ delete: function(id, callback){
 					callback([]);
 				}
 			});
-	}   
+	},
+    
+    
+    
+        getAllCommentByEmail:function(email,callback){
+
+			var sql = "select * from comments where blogpostemail =?";
+			db.getResults(sql, [email], function(result){
+				if(result.length > 0 ){
+					callback(result);
+				}else{
+					callback([]);
+				}
+			});
+	}
+    
+    
+    
+    
     
     
     
