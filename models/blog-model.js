@@ -108,6 +108,20 @@ delete: function(id, callback){
 		db.execute(sql, [comment.text,comment.postby,comment.name,comment.postid,comment.date], function(status){
 			callback(status);
 		});
+	},
+    
+    
+    
+    getAllComment:function(id,callback){
+
+			var sql = "select * from comments where postid =?";
+			db.getResults(sql, [id], function(result){
+				if(result.length > 0 ){
+					callback(result);
+				}else{
+					callback([]);
+				}
+			});
 	}
     
     
