@@ -96,7 +96,23 @@ delete: function(id, callback){
 		db.execute(sql, [id], function(status){
 			callback(status);
 		});
+	},
+    
+    
+    
+    
+    
+    insertComment: function(comment, callback){
+
+		var sql ="insert into comments values('',?,?,?,?,?)";
+		db.execute(sql, [comment.text,comment.postby,comment.name,comment.postid,comment.date], function(status){
+			callback(status);
+		});
 	}
+    
+    
+    
+    
     
     
     
