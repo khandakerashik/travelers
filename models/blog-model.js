@@ -150,11 +150,19 @@ delete: function(id, callback){
 					callback([]);
 				}
 			});
+	},
+    
+      getAllHistoryOfComment:function(email,callback){
+
+			var sql = "select * from comments where postby =?";
+			db.getResults(sql, [email], function(result){
+				if(result.length > 0 ){
+					callback(result);
+				}else{
+					callback([]);
+				}
+			});
 	}
-    
-    
-    
-    
     
     
     
