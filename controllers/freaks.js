@@ -1,6 +1,7 @@
 var express = require('express');
 var userModel = require('./../models/user-model');
 var blogModel = require('./../models/blog-model');
+var EventModel = require('./../models/events-model');
 var router = express.Router();
 
  router.get('*', function(request, response, next){
@@ -131,6 +132,8 @@ router.get('/book_events', function(request, response){
 	response.render('freaks/book_events',{user:user});
 });
 
+
+
 router.get('/edit/:id', function(request, response){
    
     
@@ -161,10 +164,12 @@ router.get('/history', function(request, response){
     
     
     
-    blogModel. getAllHistoryOfComment(request.session.data.email, function(result){
+    blogModel.getAllHistoryOfComment(request.session.data.email, function(result){
+            
+           EventModel.AllBookingByemail(request.session.data.email, function(booking){ 
+            response.render('freaks/history',{user:user,data:result,booking:booking});
     
-            //console.log(result);
-            response.render('freaks/history',{user:user,data:result});
+           });
     });
 });
 
@@ -241,7 +246,7 @@ router.post('/edit_profile', function(request, response){
             
                 
                 
-                userModel.getByemailFreaks(request.session.data.email, function(result){
+            userModel.getByemailFreaks(request.session.data.email, function(result){
 
               var user ={
               name:result.name,
@@ -250,6 +255,8 @@ router.post('/edit_profile', function(request, response){
               login:request.session.user_login
 
               };
+                
+                request.session.data=result;
                 response.render('freaks/index',{data:result,user:user});
                 }); 
                 
@@ -364,7 +371,7 @@ router.post('/edit/:id', function(request, response){
         
         };
     
-    console.log(request.params.id);
+    
      
    blogModel.updateBlog(blog, function(status){
          
