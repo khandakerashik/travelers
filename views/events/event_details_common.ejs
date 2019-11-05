@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="/abc/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/abc/css/event.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <script src="/abc/js/modernizer.js"></script>
+</head>
+</head>
+<body>
+
+   <!--    header selected -->
+   
+    <% if(user.login == " "){ %>
+           <% include ../common/header.ejs %>
+   <% } else {%>
+            <% include ../common/user_header.ejs %>
+      <%} %>
+     
+
+    <div id="wrapper">
+        <div class="section">
+            <div class="container">
+                <div class="row m45">
+                    <div class="col-md-12">
+                        <div class="widget">
+                            <div class="blog-single">
+                                <div class="post-media wow fadeIn">
+                                    <img src="<%=events.image %>" alt="" class="img-responsive">
+                                </div>
+
+                                <div class="blog-desc">
+                                    <h3 class="post-title"><%=events.title %></h3>
+                                    <p class="lead">Travel Agency: <%=events.agencyname %></p>
+                                    <p class="lead">Date: <%=events.date %> </p>
+                                    <p class="lead">Place: <%=events.place%> </p>
+                                    <p class="lead">Person Capacity: <%=events.person_capacity %> </p>
+                                    <p class="lead">Cost per person: <%=events.cost_per_person %> </p>
+
+                                    <p class="drop-cap"> 
+                                        <%=events.description %>
+                                </div>
+
+                            
+
+
+                        <div class="row p-4">
+                            <div class="col-md-12 text-center wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">
+                                <div class="portfolio-share">
+                                    <ul class="list-inline">
+                                        <li><a href=""><i class="fab fa-facebook-f"></i> Like it</a></li>
+                                        <li><a href=""><i class="far fa-save"></i></i> Pin it</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+                        
+
+    <script src="/abc/js/all.js"></script>
+</body>
+</html>
