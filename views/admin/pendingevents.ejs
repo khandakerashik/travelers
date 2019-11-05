@@ -40,15 +40,18 @@
                     <tbody>
                       <tr>
                         <td><%= data[i].title %></td>
-                        <td><%= data[i].agency_name%></td>
-                        <td><%= data[i].details %></td>
-                        <td><%= data[i].Capacity %></td>
-                        <td><%= data[i].Price_person %></td>
+                        <td><%= data[i].agencyname%></td>
+                        <td><%= data[i].description %></td>
+                        <td><%= data[i].person_capacity %></td>
+                        <td><%= data[i].cost_per_person %></td>
                         <td>
-                          <a href="/admin/pendingposts/ban"> <button class="btn btn-lg btn-block" type="submit">Approve</button></a>
+                          <!-- <a href="/admin/pendingevents/approve/<%= data[i].id %>"> <button class="btn btn-lg btn-block" name="<%= data[i].id %>" type="submit">Approve</button></a> -->
+                          <a href="/admin/pendingevents/approve/<%= data[i].id %>"> Approve </a>
+
                         </td>
                         <td>
-                              <a href="/admin/pendingposts/delete"> <button class="btn btn-lg btn-block" type="submit">Delete</button></a>
+                              <a href="/admin/pendingevents/delete/<%= data[i].id %>"> Delete </a>
+
                         </td>
                       </tr>
                       <% } %>

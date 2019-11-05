@@ -46,10 +46,10 @@
                       <td><%= data[i].gender %></td>
                       <td><img src="<%= data[i].profile_pic %>" height="65px" width="100px"></td>
                       <td>
-                        <a href="/admin/freaks/ban"> <button class="btn btn-lg btn-block" type="submit">Ban</button></a>
+                        <a href="/admin/freaks/ban/<%= data[i].id %>">Ban</a>
                       </td>
                       <td>
-                            <a href="/admin/freaks/delete"> <button class="btn btn-lg btn-block" type="submit">Delete</button></a>
+                            <a href="/admin/freaks/delete/<%= data[i].id %>"> Delete</a>
                       </td>
                     </tr>
                     <% } %>
