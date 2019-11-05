@@ -3,15 +3,17 @@ var userModel = require('./../models/user-model');
 var blogModel = require('./../models/blog-model');
 var router = express.Router();
 
-// router.get('*', function(request, response, next){
+ router.get('*', function(request, response, next){
 
-// 	if(request.cookies['user'] != null){
-// 		next();
-// 	}else{
-// 		response.redirect('/logout');
-// 	}
+	if(request.session.user_login!= null){
+ 		next();
+ 	}else{
+		response.redirect('/logout');
+ 	}
 
-// });
+ });
+
+
 router.get('/', function(request, response){
     //console.log(request.cookies['user']);
 
@@ -149,15 +151,21 @@ router.get('/edit/:id', function(request, response){
 });
 
 router.get('/history', function(request, response){
-    var user ={
+     var user ={
               name:request.session.data.name,
               email:request.session.data.email,
               user_type:request.session.data.user_type,
               login:request.session.user_login
 
               };
-
-	response.render('freaks/history',{user:user});
+    
+    
+    
+    blogModel. getAllHistoryOfComment(request.session.data.email, function(result){
+    
+            //console.log(result);
+            response.render('freaks/history',{user:user,data:result});
+    });
 });
 
 router.get('/messages', function(request, response){
