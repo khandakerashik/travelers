@@ -85,10 +85,22 @@ router.get('/edit_blog', function(request, response){
     
 });
 
-router.get('/delete_blog', function(request, response){
+router.get('/delete/:id', function(request, response){
     //console.log(request.cookies['user']);
-
-	response.render('freaks/delete_blog');
+    
+    blogModel.delete(request.params.id, function(status){	
+		if(status)
+		{
+           
+            response.redirect('../edit_blog');
+        }
+        else
+            {
+                response.redirect('../edit_blog');
+            }
+    
+    });
+	
 });
 
 router.get('/pin_post', function(request, response){
@@ -298,7 +310,7 @@ router.post('/write_blog', function(request, response){
 //        //console.log(count);
 //	});  
 //		
-//        6
+//        
 //	});  
          response.redirect('../../blog');   
             
