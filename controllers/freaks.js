@@ -128,8 +128,22 @@ router.get('/book_events', function(request, response){
               login:request.session.user_login
 
               };
+    
+    
+    
+            EventModel.AllBookingByemail(request.session.data.email, function(booking){
+                //console.log(booking);
+                   EventModel.getAlleventsByID(booking[0].eventid,function(results){
+                    //console.log(results);
+                       
+                      response.render('freaks/book_events',{user:user,data:results}); 
+                  
+                   });
+            
+            });
+    
 
-	response.render('freaks/book_events',{user:user});
+	     
 });
 
 
@@ -167,7 +181,8 @@ router.get('/history', function(request, response){
     blogModel.getAllHistoryOfComment(request.session.data.email, function(result){
             
            EventModel.AllBookingByemail(request.session.data.email, function(booking){ 
-            response.render('freaks/history',{user:user,data:result,booking:booking});
+               
+              response.render('freaks/history',{user:user,data:result,booking:booking});
     
            });
     });
