@@ -122,7 +122,21 @@ delete: function(id, callback){
 					callback([]);
 				}
 			});
-	}
+	},
+    
+    
+    
+     blogComment: function(postid,callback){
+
+			var sql = "SELECT COUNT(id) AS NI FROM comments where postid=?";
+			db.getResults(sql, [postid], function(result){
+				if(result.length > 0 ){
+					callback(result[0]);
+				}else{
+					callback([]);
+				}
+			});
+	}   
     
     
     
