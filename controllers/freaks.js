@@ -182,8 +182,14 @@ router.get('/notifications', function(request, response){
               login:request.session.user_login
 
               };
-
-	response.render('freaks/notifications',{user:user});
+    
+    
+    
+    blogModel.getAllCommentByEmail(request.session.data.email, function(result){
+    
+            console.log(result);
+            response.render('freaks/notifications',{user:user,data:result});
+    });
 });
 
 
