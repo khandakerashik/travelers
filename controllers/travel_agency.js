@@ -356,6 +356,24 @@ router.get('/history', function(request, response){
 
 });
 
+router.get('/booking', function(request, response){
+    
+    var user ={
+      name:request.session.data.name,
+      email:request.session.data.email,
+      user_type:request.session.data.user_type,
+      login:request.session.user_login
+    };
+
+    eventModel.getAllBookedevents(request.session.data.email, function(result){
+
+      response.render('travel_agency/booking',{event:result,user:user});
+
+    }); 
+
+});
+
+
 router.get('/messages', function(request, response){
     //console.log(request.cookies['user']);
     var user ={
