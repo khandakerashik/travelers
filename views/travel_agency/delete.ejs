@@ -26,40 +26,37 @@
             <div class="card-body">
               <form class="form-signin" method="post">
                 <div class="form-label-group my-4">
-                  <input type="text" id="inputTittle" name="inputTittle" class="form-control" placeholder="Name" required>
-                  <label for="inputTittle">Tittle</label>
+                  <p name="inputTittle">Tittle: <%=event.title%></p>
                 </div>
 
                 <div class="form-label-group my-4">
-                  <input type="text" id="inputAgencyname" name="inputAgencyname" class="form-control" placeholder="Agency Name" required>
-                  <label for="inputAgencyname">Agency name</label>
+                  <p name="inputAgencyname">Agency name: <%=event.agencyname%></p>
                 </div>
 
                 <div class="form-label-group my-4">
-                  <input type="date" id="inputDate" name="inputDate" class="form-control" placeholder="Email address" required>
-                  <label for="inputDate">Date</label>
+                  <p for="inputDate">Date: <%=event.date%></p>
                 </div>
 
                 <div class="form-label-group my-4">
-                  <textarea class="form-control" id="inputDescription" name="inputDescription" placeholder="Description" rows="5" required></textarea>
-                  <label for="inputDescription"></label>
+                  <p for="inputDescription">Description: <%=event.description%></p>
                 </div>
 
                 <div class="form-label-group my-4">
-                  <input type="text" id="inputPerson" name="inputPerson" class="form-control" placeholder="Person Capacity" required>
-                  <label for="inputPerson">Person Capacity</label>
+                  <p for="inputPerson">Person Capacity: <%=event.person_capacity%></p>
                 </div>
                 
                 <div class="form-label-group my-4">
-                  <input type="text" id="inputPrice" name="inputPrice" class="form-control" placeholder="inputPrice" required>
-                  <label for="inputPrice">Price Per Person</label>
+                  <p for="inputPrice">Price Per Person: <%=event.cost_per_person%></p>
+                </div>
+                <div class="form-label-group my-4">
+                   <p for="inputPrice">Image: <img src="<%=event.image%>" height="65px" width="100px"></p>
                 </div>
 
                 <div class="form-label-group my-4">
-                  <input id="inputImage" name="inputImage" class="form-control" type="file">
+                  <p for="inputPerson">Are you want to delete it?</p>
+                  <a href=""> <button class="btn btn-lg btn-block" type="submit">Confirm</button>
                 </div>
 
-                <button class="btn btn-lg btn-block my-4" type="submit">Update</button>
               </form>
             </div>
           </div>
