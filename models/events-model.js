@@ -117,6 +117,18 @@ module.exports = {
 				callback([]);
 			}
 		});
+	},
+
+	getAllBookedevents: function(email,callback){
+		var sql = "select * from booking where postbyevent=?";
+		db.getResults(sql, [email], function(result){
+			if(result.length > 0 ){
+				callback(result);
+			}else{
+				callback([]);
+			}
+		});
 	}
+
           
 }
