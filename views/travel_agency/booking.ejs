@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Booked Events</title>
+    <link rel="stylesheet" type="text/css" href="/abc/css/travel_agency.css">
+    <link rel="stylesheet" type="text/css" href="/abc/css/registration.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="app sidebar-mini">
+  
+  <% include ../travel_agency/header.ejs %>
+
+  <% include ../travel_agency/sidenav.ejs %>
+  
+    <main class="app-content">
+
+      <div class="app-title">
+        <div>
+          <h1>Booked Events</h1>
+        </div>
+      </div>
+
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                  <thead>
+                    <tr>
+                      <th>Event Tittle</th>
+                      <th>Agency name</th>
+                      <th>Booked By</th>
+                      <th>Booked By(Name)</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <% for(var i=0 ; i < event.length; i++ ) { %>
+                  <tbody>
+                    <tr>
+                      <td><%=event[i].eventtitle%></td>
+                      <td><%=event[i].agencyname%></td>
+                      <td><%=event[i].bookedby%></td>
+                      <td><%=event[i].bookedbyname%></td>
+                      <td><%=event[i].date%></td>
+                    </tr>
+                  </tbody>
+                  <% }%>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="/abc/js/jquery-3.3.1.min.js"></script>
+    <script src="/abc/js/popper.min.js"></script>
+    <script src="/abc/js/bootstrap.min.js"></script>
+    <script src="/abc/js/main.js"></script>
+  </body>
+</html>
