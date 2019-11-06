@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Edit Events</title>
+    <title>Offer Events</title>
     <link rel="stylesheet" type="text/css" href="/abc/css/travel_agency.css">
     <link rel="stylesheet" type="text/css" href="/abc/css/registration.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,7 +16,7 @@
 
       <div class="app-title">
         <div>
-          <h1>Edit Events</h1>
+          <h1>Offer Events</h1>
         </div>
       </div>
 
@@ -26,40 +26,49 @@
             <div class="card-body">
               <form class="form-signin" method="post">
                 <div class="form-label-group my-4">
-                  <input type="text" id="inputTittle" name="inputTittle" class="form-control" placeholder="Name" required>
+                  <input type="text" id="inputTittle" name="inputTittle" class="form-control" placeholder="Tittle" required value="<%=event.title%>">
                   <label for="inputTittle">Tittle</label>
                 </div>
 
                 <div class="form-label-group my-4">
-                  <input type="text" id="inputAgencyname" name="inputAgencyname" class="form-control" placeholder="Agency Name" required>
-                  <label for="inputAgencyname">Agency name</label>
+                  <input type="text" id="inputAgency" name="inputAgency" class="form-control" placeholder="Agency Name" required value="<%=event.agencyname%>">
+                  <label for="inputAgency">Agency Name</label>
                 </div>
 
                 <div class="form-label-group my-4">
-                  <input type="date" id="inputDate" name="inputDate" class="form-control" placeholder="Email address" required>
+                  <input type="text" id="inputPlace" name="inputPlace" class="form-control" placeholder="Place" required value="<%=event.place%>">
+                  <label for="inputPlace">Place</label>
+                </div>
+
+                <div class="form-label-group my-4">
+                  <input type="date" id="inputDate" name="inputDate" min="today" class="form-control" placeholder="Email address" required value="<%=event.date%>">
                   <label for="inputDate">Date</label>
+                 </div>
+
+                <div class="form-label-group my-4">
+                  <input type="text" id="inputDuration" name="inputDuration" class="form-control" placeholder="Duration" required value="<%=event.duration%>">
+                  <label for="inputDuration">Duration</label>
                 </div>
 
                 <div class="form-label-group my-4">
-                  <textarea class="form-control" id="inputDescription" name="inputDescription" placeholder="Description" rows="10" required></textarea>
+                  <textarea class="form-control" id="inputDescription" name="inputDescription" placeholder="Description" rows="10" required> <%=event.description%></textarea>
                   <label for="inputDescription"></label>
                 </div>
 
                 <div class="form-label-group my-4">
-                  <input type="text" id="inputPerson" name="inputPerson" class="form-control" placeholder="Person Capacity" required>
+                  <input type="text" id="inputPerson" name="inputPerson" class="form-control" placeholder="Person Capacity" required value="<%=event.person_capacity%>">
                   <label for="inputPerson">Person Capacity</label>
                 </div>
                 
                 <div class="form-label-group my-4">
-                  <input type="text" id="inputPrice" name="inputPrice" class="form-control" placeholder="inputPrice" required>
-                  <label for="inputPrice">Price Per Person</label>
+                  <input type="text" id="inputCost" name="inputCost" class="form-control" placeholder="Cost Per Person" required value="<%=event.cost_per_person%>">
+                  <label for="inputCost">Cost Per Person</label>
                 </div>
 
                 <div class="form-label-group my-4">
-                  <input id="inputImage" name="inputImage" class="form-control" type="file">
+                  <input id="inputImage" name="inputImage" class="form-control" type="file" value="<%=event.image%>">
                 </div>
-
-                <button class="btn btn-lg btn-block my-4" type="submit">Update</button>
+                <button class="btn btn-lg btn-block my-4" type="submit">Post</button>
               </form>
             </div>
           </div>
