@@ -6,19 +6,19 @@ var router = express.Router();
 
 
 router.get('/', function(request, response){
+
     var user ={
         name:request.session.data.name,
         email:request.session.data.email,
         user_type:request.session.data.user_type,
-        login:request.session.user_login
-          
+        login:request.session.user_login      
       };
       
-        userModel.getAgencyByEmail(request.session.data.email, function(result){
-          //console.log(request.session.data.email);
-          response.render('travel_agency/index',{user:user,data:result});
+      userModel.getAgencyByEmail(request.session.data.email, function(result){
+
+        response.render('travel_agency/index',{user:user,data:result});
           
-        });   
+      });   
 });
 
 router.get('/edit_profile', function(request, response){
@@ -32,6 +32,62 @@ router.get('/edit_profile', function(request, response){
 
     userModel.getAgencyByEmail(request.session.data.email, function(result){
       response.render('travel_agency/edit_profile',{user:user,data:result});
+    });
+
+});
+
+
+router.post('/edit_profile', function(request, response){
+
+    var user ={
+      name:request.session.data.name,
+      email:request.session.data.email,
+      user_type:request.session.data.user_type,
+      login:request.session.user_login
+    };
+    
+     var update ={
+      name: request.body.inputName,
+      phone: request.body.inputPhone,
+      gender:  request.body.inputGender,
+      password:request.body.inputPassword,
+      profile_pic:"/abc",
+      email:request.session.data.email
+    };
+    
+    
+    userModel.updateAgencies(update, function(status){
+    
+      if(status){
+
+        userModel.updateUsers(update, function(status){
+
+          if(status){
+
+            userModel.getByemailAgencies(request.session.data.email, function(result){
+
+              var user ={
+                name:result.name,
+                email:result.email,
+                user_type:request.session.data.user_type,
+                login:request.session.user_login
+              };
+              request.session.data=result;
+              response.render('travel_agency/index',{data:result,user:user});
+
+            });     
+          }        
+        });
+      }
+      else{
+
+        userModel.getByemailAgencies(request.session.data.email, function(result){
+
+          response.render('travel_agency/edit_profile',{data:result,user:user});
+
+        });  
+      
+      }
     });
 
 });
@@ -61,7 +117,7 @@ router.post('/offer_events', function(request, response){
     var event ={
       tittle:request.body.inputTittle,
       postby:request.session.data.email,
-      agencyname:request.session.data.agency_name,
+      agencyname:request.body.inputAgency,
       place:request.body.inputPlace,
       date:request.body.inputDate,
       duration:request.body.inputDuration,
@@ -70,75 +126,234 @@ router.post('/offer_events', function(request, response){
       cost:request.body.inputCost,
       image:"/abc/images/portfolio_01.jpg",
       catagory:"event",
-      status:"0"
+      status:"1"
     };
     
     eventModel.insertEvents(event, function(status){  
+
       if(status){
-        eventModel.getAllevents(function(results){
-          response.render('travel_agency/index',{event:results,user:user});   
-        });  
+
+        response.redirect("/travel_agency/"); 
+
       }
       else{
-        response.redirect("/travel_agency/offer_events");  
+
+        response.redirect("/travel_agency/offer_events");
+
       }
     });
+
 });
-
-
 
 router.get('/edit_events', function(request, response){
-    //console.log(request.cookies['user']);
+
     var user ={
-        name:request.session.data.name,
-        email:request.session.data.email,
-        user_type:request.session.data.user_type,
-        login:request.session.user_login
-          
-      };
+      name:request.session.data.name,
+      email:request.session.data.email,
+      user_type:request.session.data.user_type,
+      login:request.session.user_login      
+    };
       
-      userModel.getAllEvents(function(results){
-        response.render('travel_agency/edit_events', {user:user, data: results});		
-      });
+    eventModel.getAlleventByEmailstatus(request.session.data.email,function(results){
+
+      response.render('travel_agency/edit_events',{event:results,user:user});
+
+    });
+
 });
 
-router.get('/edit', function(request, response){
-    //console.log(request.cookies['user']);
-    var user ={
-        name:request.session.data.name,
-        email:request.session.data.email,
-        user_type:request.session.data.user_type,
-        login:request.session.user_login
-          
-      };
+router.get('/edit/:id', function(request, response){
 
-	response.render('travel_agency/edit',{user:user});
+    var user ={
+      name:request.session.data.name,
+      email:request.session.data.email,
+      user_type:request.session.data.user_type,
+      login:request.session.user_login
+    };
+
+    eventModel.getAlleventsByID(request.params.id, function(result){
+
+      response.render('travel_agency/edit',{event:result,user:user});
+
+    }); 
+
+});
+
+router.post('/edit/:id', function(request, response){
+
+    var user ={
+      name:request.session.data.name,
+      email:request.session.data.email,
+      user_type:request.session.data.user_type,
+      login:request.session.user_login
+    };
+
+    var event ={
+      tittle:request.body.inputTittle,
+      postby:request.session.data.email,
+      agencyname:request.body.inputAgency,
+      place:request.body.inputPlace,
+      date:request.body.inputDate,
+      duration:request.body.inputDuration,
+      description:request.body.inputDescription,
+      person:request.body.inputPerson,
+      cost:request.body.inputCost,
+      image:"/abc/images/portfolio_01.jpg",
+      catagory:"event",
+      status:"1",
+      id:request.params.id
+    };
+    
+    eventModel.updateEvents(event, function(status){  
+
+      if(status){
+
+        response.redirect("/travel_agency/edit_events");
+
+      }
+      else{
+      }
+    });
+
 });
 
 router.get('/delete_events', function(request, response){
-    //console.log(request.cookies['user']);
+    
     var user ={
         name:request.session.data.name,
         email:request.session.data.email,
         user_type:request.session.data.user_type,
-        login:request.session.user_login
-          
+        login:request.session.user_login     
       };
+      
+    eventModel.getAlleventByEmailstatus(request.session.data.email,function(results){
 
-	response.render('travel_agency/delete_events',{user:user});
+      response.render('travel_agency/delete_events',{event:results,user:user});
+
+    });
+
+});
+
+
+router.get('/delete/:id', function(request, response){
+    
+    var user ={
+      name:request.session.data.name,
+      email:request.session.data.email,
+      user_type:request.session.data.user_type,
+      login:request.session.user_login
+    };
+
+    eventModel.getAlleventsByID(request.params.id, function(result){
+
+      response.render('travel_agency/delete',{event:result,user:user});
+
+    }); 
+
+});
+
+router.get('/delete/:id', function(request, response){
+
+	var user ={
+      name:request.session.data.name,
+      email:request.session.data.email,
+      user_type:request.session.data.user_type,
+      login:request.session.user_login      
+    };
+
+
+  var update ={
+      status:"0",
+      id:request.params.id
+    };
+    
+    eventModel.deleteEvents(update, function(status){
+
+      if(status){
+
+        response.redirect("/travel_agency/delete_events");
+
+      }
+      else{
+
+        response.redirect("/travel_agency/delete/:id");
+
+      }
+    });
+
+});
+
+router.post('/delete/:id', function(request, response){
+
+	var user ={
+      name:request.session.data.name,
+      email:request.session.data.email,
+      user_type:request.session.data.user_type,
+      login:request.session.user_login      
+    };
+
+
+  	var update ={
+      status:"0",
+      id:request.params.id
+    };
+
+    var event ={
+      tittle:request.body.inputTittle,
+      postby:request.session.data.email,
+      agencyname:request.body.inputAgency,
+      place:request.body.inputPlace,
+      date:request.body.inputDate,
+      duration:request.body.inputDuration,
+      description:request.body.inputDescription,
+      person:request.body.inputPerson,
+      cost:request.body.inputCost,
+      image:"/abc/images/portfolio_01.jpg",
+      catagory:"event",
+      status:"0",
+      id:request.params.id
+    };
+    
+    eventModel.deleteEvents(update, function(status){
+
+		if(status){
+
+    		eventModel.insertdeclinedEvents(event, function(status){
+
+      			if(status){
+
+        			response.redirect("/travel_agency/delete_events");
+        		}
+        		else{
+
+        			response.redirect("/travel_agency/delete");
+
+      			}
+
+      		});	
+      	}
+    		
+    	
+	});
 });
 
 router.get('/history', function(request, response){
-    //console.log(request.cookies['user']);
-    var user ={
-        name:request.session.data.name,
-        email:request.session.data.email,
-        user_type:request.session.data.user_type,
-        login:request.session.user_login
-          
-      };
 
-	response.render('travel_agency/history',{user:user});
+    var user ={
+      name:request.session.data.name,
+      email:request.session.data.email,
+      user_type:request.session.data.user_type,
+      login:request.session.user_login      
+    };
+
+      
+   	eventModel.getAlleventByEmailzerostatus(request.session.data.email,function(results){
+		 eventModel.getAlleventByEmailstatus(request.session.data.email,function(result){
+      		response.render('travel_agency/history',{data:results,event:result,user:user}); 
+
+    });
+});
+
 });
 
 router.get('/messages', function(request, response){
@@ -152,19 +367,27 @@ router.get('/messages', function(request, response){
       };
 
 	response.render('travel_agency/messages',{user:user});
+
 });
 
 router.get('/notifications', function(request, response){
-    //console.log(request.cookies['user']);
-    var user ={
-        name:request.session.data.name,
-        email:request.session.data.email,
-        user_type:request.session.data.user_type,
-        login:request.session.user_login
-          
-      };
 
-	response.render('travel_agency/notifications',{user:user});
+    var user ={
+      name:request.session.data.name,
+      email:request.session.data.email,
+      user_type:request.session.data.user_type,
+      login:request.session.user_login      
+    };
+      
+    eventModel.getAlleventByEmailzerostatus(request.session.data.email,function(results){
+		eventModel.getAlleventByEmailstatus(request.session.data.email,function(result){
+      		response.render('travel_agency/notifications',{data:results,event:result,user:user}); 
+
+    	});
+	});
 });
+
+
+
 
 module.exports = router;
