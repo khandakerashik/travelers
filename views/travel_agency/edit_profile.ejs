@@ -25,40 +25,39 @@
           <div class="card card-signin my-4">
             <div class="card-body">
               <form class="form-signin" method="post">
+                  <div class="form-label-group my-4">
+                    <input type="text" id="inputName" name="inputName" class="form-control" placeholder="Name" required value="<%= data.name %>">
+                    <label for="inputName">Name</label>
+                  </div>
 
                   <div class="form-label-group my-4">
-                      <input type="text" id="inputName" name="inputName" class="form-control" placeholder="Name" required value="<%= data.name %>">
-                      <label for="inputName">Name</label>
-                    </div>
-    
-                    <div class="form-label-group my-4">
-                      <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email address" required value="<%= data.email %>">
-                      <label for="inputEmail">Email address</label>
-                    </div>
+                    <input type="text" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email" required value="<%= data.email %>" disabled>
+                    <label for="inputEmail">Email</label>
+                  </div>
 
-                    <div class="form-label-group my-4">
-                        <input type="text" id="inputAgencyname" name="inputAgencyname" class="form-control" placeholder="Agency name" required value="<%= data.agency_name %>">
-                        <label for="inputAgencyname">Agency name</label>
-                      </div>
+                  <div class="form-label-group my-4">
+                    <input type="text" id="inputAgencyname" name="inputAgencyname" class="form-control" placeholder="Agency name" required value="<%= data.agency_name %>">
+                    <label for="inputAgencyname">Agency name</label>
+                  </div>
     
-                    <div class="form-label-group my-4">
-                      <input type="text" id="inputPhone" name="inputPhone" class="form-control" placeholder="Phone No" required value="<%= data.phone %>">
-                      <label for="inputPhone">Phone No</label>
-                    </div>
+                  <div class="form-label-group my-4">
+                    <input type="text" id="inputPhone" name="inputPhone" class="form-control" placeholder="Phone No" required value="<%= data.phone %>">
+                    <label for="inputPhone">Phone No</label>
+                  </div>
 
-                    <div class="form-label-group my-4">
-                      <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" required value="<%= data.password %>">
-                      <label for="inputPassword">Password</label>
-                    </div>
+                  <div class="form-label-group my-4">
+                    <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password" required value="<%= data.password %>">
+                    <label for="inputPassword">Password</label>
+                  </div>
                     
-                    <div class="form-label-group my-4">
-                      <input type="password" id="inputConfirmPassword" name="inputConfirmPassword" class="form-control" placeholder="Password" required value="<%= data.password %>">
-                      <label for="inputConfirmPassword">Confirm password</label>
-                    </div>
+                  <div class="form-label-group my-4">
+                    <input type="password" id="inputConfirmPassword" name="inputConfirmPassword" class="form-control" placeholder="Password" required value="<%= data.password %>">
+                    <label for="inputConfirmPassword">Confirm password</label>
+                  </div>
     
-                    <div class="form-label-group my-4">
-                      <input id="inputImage" name="inputImage" class="form-control" type="file">
-                    </div>
+                  <div class="form-label-group my-4">
+                    <input id="inputImage" name="inputImage" value="<%= data.image %>" class="form-control" type="file">
+                  </div>
 
 
 
