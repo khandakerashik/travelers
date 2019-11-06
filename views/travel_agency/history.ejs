@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Edit Events</title>
+    <title>History</title>
     <link rel="stylesheet" type="text/css" href="/abc/css/travel_agency.css">
     <link rel="stylesheet" type="text/css" href="/abc/css/registration.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,7 +16,7 @@
 
       <div class="app-title">
         <div>
-          <h1>Edit Events</h1>
+          <h1>History</h1>
         </div>
       </div>
 
@@ -27,6 +27,7 @@
             <div class="tile-body">
               <div class="table-responsive">
                 <table class="table table-hover table-bordered" id="sampleTable">
+                  <p>Approved Event</p>
                   <thead>
                     <tr>
                       <th>Tittle</th>
@@ -43,15 +44,57 @@
                   <% for(var i=0 ; i < event.length; i++ ) { %>
                   <tbody>
                     <tr>
-                      <td><%=event[i].tittle%></td>
+                      <td><%=event[i].title%></td>
                       <td><%=event[i].agencyname%></td>
                       <td><%=event[i].place%></td>
                       <td><%=event[i].date%></td>
                       <td><%=event[i].duration%></td>
                       <td><%=event[i].description%></td>
-                      <td><%=event[i].person%></td>
-                      <td><%=event[i].cost%></td>
+                      <td><%=event[i].person_capacity%></td>
+                      <td><%=event[i].cost_per_person%></td>
                       <td><img src="<%=event[i].image%>" height="65px" width="100px"></td>
+                    </tr>
+                  </tbody>
+                  <% }%>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-bordered" id="sampleTable">
+                  <p>Declined/Deleted Event</p>
+                  <thead>
+                    <tr>
+                      <th>Tittle</th>
+                      <th>Agency name</th>
+                      <th>Place</th>
+                      <th>Date</th>
+                      <th>Duration</th>
+                      <th>Description</th>
+                      <th>Person Capacity</th>
+                      <th>Price Per Person</th>
+                      <th>Image</th>
+                    </tr>
+                  </thead>
+                  <% for(var i=0 ; i < data.length; i++ ) { %>
+                  <tbody>
+                    <tr>
+                      <td><%=data[i].title%></td>
+                      <td><%=data[i].agencyname%></td>
+                      <td><%=data[i].place%></td>
+                      <td><%=data[i].date%></td>
+                      <td><%=data[i].duration%></td>
+                      <td><%=data[i].description%></td>
+                      <td><%=data[i].person_capacity%></td>
+                      <td><%=data[i].cost_per_person%></td>
+                      <td><img src="<%=data[i].image%>" height="65px" width="100px"></td>
                     </tr>
                   </tbody>
                   <% }%>
