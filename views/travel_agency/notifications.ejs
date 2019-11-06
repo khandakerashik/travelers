@@ -20,13 +20,19 @@
         </div>
       </div>
 
-      
+      <% for(var i=0 ; i < event.length; i++ ) { %>
 
-      <div class="alert alert-info">
-        <strong><a href="/events/event_details">"Tittle"</a> </strong>&nbsp event post is approved by admin.
+      <div class="alert alert-info"> 
+        <strong><a href="/events/event_details/<%=event[i].id%>">"<%=event[i].title%>"</a></strong>&nbsp event post is approved by admin.
       </div>
+      <% } %>
 
+      <% for(var i=0 ; i < data.length; i++ ) { %>
 
+      <div class="alert alert-danger">
+        <strong>"<%=data[i].title%>"</strong>&nbsp event post is declined by admin.
+      </div>
+      <% } %>
 
     </main>
     <script src="/abc/js/jquery-3.3.1.min.js"></script>
