@@ -33,28 +33,31 @@
                       <th>Agency name</th>
                       <th>Place</th>
                       <th>Date</th>
+                      <th>Duration</th>
                       <th>Description</th>
                       <th>Person Capacity</th>
                       <th>Price Per Person</th>
                       <th>Image</th>
                     </tr>
                   </thead>
-                  
+                  <% for(var i=0 ; i < event.length; i++ ) { %>
                   <tbody>
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td><img src="" height="65px" width="100px"></td>
+                      <td><%=event[i].title%></td>
+                      <td><%=event[i].agencyname%></td>
+                      <td><%=event[i].place%></td>
+                      <td><%=event[i].date%></td>
+                      <td><%=event[i].duration%></td>
+                      <td><%=event[i].description%></td>
+                      <td><%=event[i].person_capacity%></td>
+                      <td><%=event[i].cost_per_person%></td>
+                      <td><img src="<%=event[i].image%>" height="65px" width="100px"></td>
                       <td>
-                        <a href="/travel_agency/edit"> <button class="btn btn-lg btn-block" type="submit">Edit</button></a>
+                        <a href="/travel_agency/edit/<%=event[i].id%>"> <button class="btn btn-lg btn-block" type="submit">Edit</button></a>
                       </td>
                     </tr>
                   </tbody>
+                  <% }%>
                 </table>
               </div>
             </div>
