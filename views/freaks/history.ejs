@@ -16,42 +16,34 @@
 
       <div class="app-title">
         <div>
-          <h1>History</h1>
+          <h1>History </h1>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="tile">
-            <div class="tile-body">
-              <div class="table-responsive">
-                <table class="table table-hover table-bordered" id="sampleTable">
-                  <thead>
-                    <tr>
-                      <th>Tittle</th>
-                      <th>Name(Post By)</th>
-                      <th>Date</th>
-                      <th>Description</th>
-                      <th>Image</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <a href="/blog/blog_details">
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td><img  src="/abc/images/portfolio_01.jpg" height="65px" width="100px"></td>
-                    </tr>
-                  </a>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
+      
+        <% for(var i=0 ; i < booking.length; i++ ) { %>
+
+      <div class="alert alert-info">
+        <strong><a href="/events/event_details/<%=booking[i].eventid%>">"THIS EVENT " </a> </strong>&nbsp you Have to Register at <%=booking[i].date %>
       </div>
+    <% } %>
+        
+        
+      <% for(var i=0 ; i < data.length; i++ ) { %>
+
+      <div class="alert alert-danger">
+        <strong><a href="/blog/blog_details/<%=data[i].postid%>">"COMMENT" </a> </strong>&nbsp  you posted a Comment..<%=data[i].date %>
+      </div>
+    <% } %>
+        
+           <% for(var i=0 ; i < notification.length; i++ ) { %>
+
+      <div class="alert alert-sucess">
+        <strong><a href="/events/event_details/<%=notification[i].eventid%>">"REPORT" </a> </strong>&nbsp to Admin on  <%=notification[i].date %>
+      </div>
+    <% } %>
+        
+
     </main>
     <script src="/abc/js/jquery-3.3.1.min.js"></script>
     <script src="/abc/js/popper.min.js"></script>

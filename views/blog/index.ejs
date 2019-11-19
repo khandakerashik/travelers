@@ -7,6 +7,7 @@
 <body> 
 
     <!--    header selected -->
+   
     <% if (user.login=="true") { %>
         <% if(user.user_type=="Admin") {%>
             <% include ../common/adminheader.ejs %>
@@ -16,6 +17,8 @@
     <% } else { %>
     <% include ../common/header.ejs %>
     <% } %>
+     
+    
     <div id="wrapper">
         <div class="section">
             <div class="container">

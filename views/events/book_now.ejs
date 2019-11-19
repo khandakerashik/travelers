@@ -9,15 +9,15 @@
 </head>
 <body>
 
-    <% if (user.login=="true") { %>
-        <% if(user.user_type=="Admin") {%>
-            <% include ../common/adminheader.ejs %>
-            <% } else { %>
-                <% include ../common/user_header.ejs %>
-            <% } %>
-    <% } else { %>
-    <% include ../common/header.ejs %>
-    <% } %>
+   <!--    header selected -->
+   
+    <% if(user.login == " "){ %>
+           <% include ../common/header.ejs %>
+   <% } else {%>
+            <% include ../common/user_header.ejs %>
+      <%} %>
+     
+
     <div id="wrapper">
         <div class="section">
             <div class="container">
@@ -27,16 +27,16 @@
                             <div class="blog-single">
                                 <form method="post">
                                     <div class="post-media wow fadeIn">
-                                        <img src="/abc/images/single.jpg" alt="" class="img-responsive">
+                                        <img src="<%=events.image %>" alt="" class="img-responsive">
                                     </div>
 
                                     <div class="blog-desc">
-                                        <h3 class="post-title">Learning Lost Type Patches</h3>
-                                        <p class="lead">Travel Agency:</p>
-                                        <p class="lead">Date: </p>
-                                        <p class="lead">Place: </p>
-                                        <p class="lead">Available Person Capacity: </p>
-                                        <p class="lead">Cost per person: </p>
+                                        <h3 class="post-title"><%=events.title %></h3>
+                                        <p class="lead">Travel Agency: <%=events.agencyname %> </p>
+                                        <p class="lead">Date: <%=events.date %> </p>
+                                        <p class="lead">Place: <%=events.place %> </p>
+                                        <p class="lead">Available Person Capacity: <%=events.person_capacity %> </p>
+                                        <p class="lead">Cost per person:  <%=events.cost_per_person %> </p>
 
                                         <div class="form-label-group my-4">
                                             <input type="text" id="inputPerson" name="inputPerson" class="form-control" placeholder="How many person want to book?" required></p>
@@ -44,8 +44,8 @@
                                         </div>
 
                                         <div class="form-label-group my-4">
-                                            <input type="text" id="inputPrice" name="inputPrice" class="form-control" placeholder="How many person want to book?" required></p>
-                                            <label for="inputPrice">Estimated Price:</label>
+                                            <input type="password" id="inputPrice" name="inputPrice" class="form-control" placeholder="How many person want to book?" required></p>
+                                            <label for="inputPrice">Enter Secret Pin :</label>
                                         </div>
 
                                         <div class="col-md-12 text-center">

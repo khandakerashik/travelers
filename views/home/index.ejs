@@ -8,12 +8,21 @@
 <body> 
     
 <!--    header selected -->
-     <% include ../common/user_header.ejs %>
+<% if (user.login=="true") { %>
+    <% if(user.user_type=="Admin") {%>
+        <% include ../common/adminheader.ejs %>
+        <% } else { %>
+            <% include ../common/user_header.ejs %>
+        <% } %>
+<% } else { %>
+<% include ../common/header.ejs %>
+<% } %>
+     
     
         <div class="container h-50">
             <div class="d-flex justify-content-center h-100">
                 <div class="searchbar">
-                  <input class="search_input" type="text" name="" placeholder="Search here...">
+                  <input class="search_input" type="text" name="search" placeholder="Search here...">
                   <a href="" class="search_icon"><i class="fas fa-search"></i></a>
                 </div>
             </div>

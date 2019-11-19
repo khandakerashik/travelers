@@ -8,15 +8,15 @@
 </head>
 <body>
 
-    <% if (user.login=="true") { %>
-        <% if(user.user_type=="Admin") {%>
-            <% include ../common/adminheader.ejs %>
-            <% } else { %>
-                <% include ../common/user_header.ejs %>
-            <% } %>
-    <% } else { %>
-    <% include ../common/header.ejs %>
-    <% } %>
+   <!--    header selected -->
+   
+    <% if(user.login == " "){ %>
+           <% include ../common/header.ejs %>
+   <% } else {%>
+            <% include ../common/user_header.ejs %>
+      <%} %>
+     
+
     <div id="wrapper">
         <div class="section">
             <div class="container">
@@ -62,70 +62,32 @@
 
                         <div class="comment-widget clearfix">
                             <div class="contact-widget">
-                                <h4>5 Comments</h4>
+                                <h4><%=count.NI %> Comments</h4>
                                 <hr>
                             </div>
-
+                
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="panel panel-info">
                                         <div class="panel-body comments">
-
+                              <% for(var i=0 ; i < comment.length; i++ ) { %>
                                             <ul class="media-list">
                                                 <li class="media">
+                                        
                                                     <div class="comment">
                                                         <a href="" class="pull-left">
+                                                          
                                                             <img src="/abc/images/team_01.jpg" alt="" class="img-circle">
                                                         </a>
                                                         <div class="media-body">
-                                                            <strong class="text">Jane Doe</strong>
+                                                            <strong class="text"><%=comment[i].name%></strong>
                                                             <span class="text-muted">
-                                                                                                <small class="text-muted">6 days ago</small></span>
+                                                                                                <small class="text-muted"><%=comment[i].date%></small></span>
                                                             <p>
-                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, <a href="#">#some link </a>.
+                                                               <%=comment[i].text%>
                                                             </p>
                                                         </div>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </li>
-                                                <li class="media">
-                                                    <div class="comment">
-                                                        <a href="#" class="pull-left">
-                                                            <img src="/abc/images/team_03.jpg" alt="" class="img-circle">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <strong class="text">Jana Cova</strong>
-                                                            <span class="text-muted">
-                                                                                                <small class="text-muted">12 days ago</small></span>
-                                                            <p>
-                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet.
-                                                            </p>
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </li>
-                                                <li class="media">
-                                                    <div class="comment">
-                                                        <a href="#" class="pull-left">
-                                                            <img src="/abc/images/team_02.jpg" alt="" class="img-circle">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <strong class="text">Johnatan Smarty</strong>
-                                                            <span class="text-muted">
-                                                                                                <small class="text-muted">1 month ago</small></span>
-                                                            <p>
-                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-                                                            </p>
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                                 <%} %>     
 
                         <hr class="invis">
 
@@ -136,10 +98,10 @@
                             </div>
 
                             <div class="contact_form comment-form">
-                                <form class="row">
+                                <form class="row" method="post" action="/blog/comment/<%=blog.id%>">
                                     <div class="col-md-12 col-sm-12">
                                         <label>Comment <span class="required"></span></label>
-                                        <textarea class="form-control" placeholder=""></textarea>
+                                        <textarea class="form-control" id="comment" name="comment" placeholder=""></textarea>
                                     </div>
                                     <div class="col-md-12 col-sm-12">
                                         <input type="submit" value="Send Comment" class="btn btn-primary" />

@@ -26,27 +26,26 @@
             <div class="card-body">
               <form class="form-signin" method="post">
                 <div class="form-label-group my-4">
-                  <input type="text" id="inputTittle" name="inputTittle" class="form-control" placeholder="Name" required>
+                  
+                    
+                    
+                    <input type="text" id="inputTittle" name="inputTittle" class="form-control" placeholder="Name" value="<%=blog.title%>" required>
                   <label for="inputTittle">Tittle</label>
                 </div>
 
                 <div class="form-label-group my-4">
-                  <input type="text" id="inputName" name="inputName" class="form-control" placeholder="Name" required>
-                  <label for="inputName">Name(Post By)</label>
+                  <input type="text" id="inputLocation" name="inputLocation" value="<%=blog.location%>" class="form-control" placeholder="inputLocation" required>
+                  <label for="inputLocation">Location</label>
                 </div>
 
-                <div class="form-label-group my-4">
-                  <input type="date" id="inputDate" name="inputDate" class="form-control" placeholder="Email address" required>
-                  <label for="inputDate">Date</label>
-                </div>
 
                 <div class="form-label-group my-4">
-                  <textarea class="form-control" id="inputDescription" name="inputDescription" placeholder="Description" rows="10" required></textarea>
+                  <textarea class="form-control"   id="inputDescription" name="inputDescription" placeholder="Description" rows="10" required><%=blog.description%></textarea>
                   <label for="inputDescription"></label>
                 </div>
 
                 <div class="form-label-group my-4">
-                  <input id="inputImage" name="inputImage" class="form-control" type="file">
+                  <input id="inputImage" name="inputImage" value="<%=blog.image%>" class="form-control" type="file">
                 </div>
 
                 <button class="btn btn-lg btn-block my-4" type="submit">Update</button>
