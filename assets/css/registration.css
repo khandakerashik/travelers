@@ -127,6 +127,8 @@
 
 .form-control{
   border-radius: 10rem;
+  
+
 }
 
 p{
@@ -146,10 +148,6 @@ a:hover{
 select{
   height: auto;
   border-radius: 2rem;
-}
-
-.row{
-  height: 100%;
 }
 
 .data1{
