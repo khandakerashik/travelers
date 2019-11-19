@@ -276,7 +276,7 @@ router.get('/delete/:id', function(request, response){
       }
       else{
 
-        response.redirect("/travel_agency/delete/:id");
+        response.redirect("/travel_agency/delete/"+request.params);
 
       }
     });
@@ -377,14 +377,68 @@ router.get('/booking', function(request, response){
 router.get('/messages', function(request, response){
     //console.log(request.cookies['user']);
     var user ={
-        name:request.session.data.name,
-        email:request.session.data.email,
-        user_type:request.session.data.user_type,
-        login:request.session.user_login
-          
-      };
+              name:request.session.data.name,
+              email:request.session.data.email,
+              user_type:request.session.data.user_type,
+              login:request.session.user_login
 
-	response.render('travel_agency/messages',{user:user});
+              };
+
+       userModel.getAll(request.session.data.email,function(result){
+           eventModel.getMessage(request.session.data.email,function(data){
+           
+        
+          response.render('travel_agency/messages',{user:user,freaks:result,data:data}); 
+           });
+    });
+    
+
+});
+
+
+
+
+router.post('/messages', function(request, response){
+    
+    
+    var user ={
+              name:request.session.data.name,
+              email:request.session.data.email,
+              user_type:request.session.data.user_type,
+              login:request.session.user_login
+
+              };
+     
+    var today=new Date();
+    var message =
+        {
+            sender:request.session.data.email,
+            reciver:request.body.rmail,
+            text:request.body.reciver,
+            date:today,
+            sendername:request.session.data.name
+         }
+    
+     
+      eventModel.insertMessage(message, function(status){
+          
+    if(status)
+            {
+
+              response.redirect('../travel_agency/messages');    
+
+            }
+        
+        else
+        
+            {
+                
+              response.redirect('../travel_agency/messages');
+            
+            }  
+  
+  });
+
 
 });
 

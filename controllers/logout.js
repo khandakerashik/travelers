@@ -7,7 +7,8 @@ router.get('/', function(request, response){
     //console.log(request.cookies['username']);
 	//response.clearCookie('user');
    // request.session.useremail=null;
-    request.session.user_login="false";
+    request.session.user_login=null;
+    request.session.data={};
 	response.redirect('/login');
 });
 

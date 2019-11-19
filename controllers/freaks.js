@@ -120,7 +120,7 @@ router.get('/pin_post', function(request, response){
 });
 
 router.get('/book_events', function(request, response){
-    //console.log(request.cookies['user']);
+
     var user ={
               name:request.session.data.name,
               email:request.session.data.email,
@@ -132,9 +132,9 @@ router.get('/book_events', function(request, response){
     
     
             EventModel.AllBookingByemail(request.session.data.email, function(booking){
-                //console.log(booking);
+                
                    EventModel.getAlleventsByID(booking[0].eventid,function(results){
-                    //console.log(results);
+        
                        
                       response.render('freaks/book_events',{user:user,data:results}); 
                   
@@ -180,9 +180,13 @@ router.get('/history', function(request, response){
     
     blogModel.getAllHistoryOfComment(request.session.data.email, function(result){
             
-           EventModel.AllBookingByemail(request.session.data.email, function(booking){ 
+           EventModel.AllBookingByemail(request.session.data.email, function(booking){
                
-              response.render('freaks/history',{user:user,data:result,booking:booking});
+                 EventModel.getAllNotificationByEmail(request.session.data.email, function(notification){
+               
+                  response.render('freaks/history',{user:user,data:result,booking:booking,notification:notification});
+                     
+                 });
     
            });
     });
@@ -199,9 +203,71 @@ router.get('/messages', function(request, response){
 
               };
 
-	response.render('freaks/messages',{user:user});
+       userModel.getAll(request.session.data.email,function(result){
+           EventModel.getMessage(request.session.data.email,function(data){
+           
+        
+          response.render('freaks/messages',{user:user,freaks:result,data:data}); 
+           });
+    });
+    
+    
+	
 });
 
+router.post('/messages', function(request, response){
+    
+    
+    var user ={
+              name:request.session.data.name,
+              email:request.session.data.email,
+              user_type:request.session.data.user_type,
+              login:request.session.user_login
+
+              };
+     
+    var today=new Date();
+    var message =
+        {
+            sender:request.session.data.email,
+            reciver:request.body.rmail,
+            text:request.body.reciver,
+            date:today,
+            sendername:request.session.data.name
+         }
+    
+     
+      EventModel.insertMessage(message, function(status){
+          
+         
+		
+		if(status)
+            {
+
+            
+              response.redirect('../freaks/messages');    
+
+            }
+        
+        else
+        
+            {
+                
+              response.redirect('../freaks/messages');
+            
+            }
+    
+    
+    
+
+   
+    
+    
+	
+  });
+
+
+});
 router.get('/notifications', function(request, response){
  var user ={
               name:request.session.data.name,
@@ -336,18 +402,8 @@ router.post('/write_blog', function(request, response){
     
     blogModel.insertBlog(blog, function(status){	
 		if(status)
-		{
-            
-    
-//        blogModel.blogCount(function(count){
-//         
-//        blogModel.getAllblog(function(results){
-//		response.render('blog/index',{blog: results,user:user,count:count});  
-//        //console.log(count);
-//	});  
-//		
-//        
-//	});  
+		{  
+  
          response.redirect('../../blog');   
             
             

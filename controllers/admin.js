@@ -24,8 +24,8 @@ router.get('/', function(request, response){
         adminModel.totalmessage(function(result2){
           adminModel.totalfreaks(function(result3){
             adminModel.totalagencies(function(result4){
-              adminModel.totalagencies(function(result5){
-                adminModel.totalagencies(function(result6){
+              adminModel.totalblogs(function(result5){
+                adminModel.totalevents(function(result6){
         response.render('admin/index',{user:user,result,result2,result3,result4,result5,result6});
                 });
               });

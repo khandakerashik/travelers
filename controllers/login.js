@@ -19,6 +19,7 @@ router.post('/', function(request, response){
             //response.session.useremail=request.body.inputEmail;
             
             userModel.getByemail(request.body.inputEmail, function(result){
+                
             request.session.user_login="true";
             request.session.data =result;
             response.redirect('/home'); 
