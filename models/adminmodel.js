@@ -25,7 +25,7 @@ module.exports = {
             });	
         },
         messages: function(callback){
-            var sql = "select * from message where reciever= 'admin@travelers.com' and read_status=0 ";
+            var sql = "select * from admin_message where reciever= 'admin@travelers.com' and read_status=0 ";
             
             db.getResults(sql, [], function(results){
                 
@@ -37,7 +37,7 @@ module.exports = {
             });	
         },
         getMessageById: function(user,callback){
-            var sql = "select * from message where id=? ";
+            var sql = "select * from admin_message where id=? ";
             
             db.getResults(sql, [user.id], function(results){
                 
@@ -82,7 +82,7 @@ module.exports = {
              },
              totalmessage:function(callback){
 
-                var sql = "select COUNT(id) AS id from message where reciever= 'admin@travelers.com'";
+                var sql = "select COUNT(id) AS id from admin_message where reciever= 'admin@travelers.com'";
                 db.getResults(sql,[], function(result2){
                     if(result2.length > 0 ){
                         callback(result2[0]);
@@ -168,19 +168,13 @@ module.exports = {
         sendmessage: function(user, callback){
 
 			
-			var sql ="insert into message values('',?,?,?,?)";
+			var sql ="insert into admin_message values('',?,?,?,?)";
 			console.log(sql);
 			db.execute(sql, [user.sender,user.reciever,user.message,user.status], function(status){
 				callback(status);
 			});
         },
-        updateAdminByEmail: function(add, callback){
-            var sql ="update admins set name=?, email=?, phone=?, gender=?, password=?, profile_pic=? where email=add.email";
         
-            db.execute(sql, [add.name, add.email, add.phone,add.gender, add.password ,add.profile_pic], function(status){
-                callback(status);
-            });
-        },
         totaluser:function(callback){
 
             var sql = "SELECT COUNT(id) AS id FROM users";
@@ -232,8 +226,15 @@ module.exports = {
         },
         updateAdminByEmail: function(add, callback){
             var sql ="update admins set name=?, email=?, phone=?, gender=?, password=?, profile_pic=? where email= ?";
-            console.log("adminup"+ add.email);
+            console.log("adminupdsfd>"+ add.email);
             db.execute(sql, [add.name, add.email, add.phone,add.gender, add.password ,add.profile_pic, add.email], function(status){
+                callback(status);
+            });
+        },
+        updateByEmail: function(add, callback){
+            var sql ="update users set name=?, password=? where email= ?";
+            console.log("user update :"+ add.email);
+            db.execute(sql, [add.name,add.password, add.email], function(status){
                 callback(status);
             });
         },
@@ -253,7 +254,7 @@ module.exports = {
             });
         },
         messageread: function(user, callback){
-            var sql ="update message set read_status = 1 where id= ?";
+            var sql ="update admin_message set read_status = 1 where id= ?";
         
             db.execute(sql, [user.id], function(status){
                 callback(status);
